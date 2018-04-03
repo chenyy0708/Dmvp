@@ -5,7 +5,7 @@
 
 
 ## 导入地址
-`compile 'com.github.chenyy0708:DMvp:vlastVersion'`
+`compile 'com.github.chenyy0708:DMvp:lastVersion'`
 
 # 使用方式
 
