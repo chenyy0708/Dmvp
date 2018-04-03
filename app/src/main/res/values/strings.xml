@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">回天IM</string>
+    <string name="app_name">DMvp</string>
 
     <string-array name="messages_array">
         <item>你好！</item>

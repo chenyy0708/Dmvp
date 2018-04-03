@@ -25,13 +25,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- 欢迎页 -->
-        <activity android:name="com.huitian.ui.activity.TestFragmentActivity">
+        <activity android:name="com.huitian.ui.activity.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.huitian.ui.activity.TestFragmentActivity"/>
     </application>
 
 </manifest>

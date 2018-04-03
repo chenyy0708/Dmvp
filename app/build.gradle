@@ -40,7 +40,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':dmvp')
+//    compile project(':dmvp')
+    compile 'com.github.chenyy0708:DMvp:v1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
+
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"] // 编译代码
     testCompile 'junit:junit:4.12'
 }
