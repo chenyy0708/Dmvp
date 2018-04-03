@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.base.BaseActivity;
@@ -21,6 +22,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * @author :ChenYangYi
@@ -35,6 +37,8 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
     BaseQuickAdapter mAdapter;
     @Inject
     RecyclerView.LayoutManager mLayoutManager;
+    @Bind(R.id.bt)
+    Button bt;
 
     @Override
     public int getLayoutId() {
@@ -48,6 +52,7 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        bt.setVisibility(View.VISIBLE);
         mPresenter.getData(10);
     }
 
@@ -77,4 +82,5 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
     public Activity getVActivity() {
         return this;
     }
+
 }
