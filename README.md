@@ -7,6 +7,10 @@
 ## 导入地址
 `compile 'com.github.chenyy0708:DMvp:lastVersion'`
 
+> 在app的build.grdle文件中添加,dagger2[最新版本号](https://github.com/google/dagger)
+` annotationProcessor 'com.google.dagger:dagger-compiler:2.x' // 编译代码使用`
+
+
 # 使用方式
 
 ##1.1 配置Application，设置url地址
@@ -265,6 +269,8 @@ public class TestPresenter extends BasePresenter<TestContract.View, TestContract
 
 ## 1.5 最后贴一下Activity中的完整代码
 
+> 所有的代码编写完，点击Build --> Make Project 自动生成ComPonent代码。
+
 ```
 
 /**
@@ -323,6 +329,7 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
 [AndroidFire](https://github.com/jaydenxiao2016/AndroidFire)<br>
 [retrofit2.0](https://github.com/square/retrofit) <br>
 [Rxjava](https://github.com/ReactiveX/RxJava) <br>
+[dagger2](https://github.com/google/dagger) <br>
 
 # License
 
