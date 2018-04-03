@@ -3,6 +3,7 @@ package com.chen.common.utils;
 import android.content.Context;
 
 import com.chen.common.app.App;
+import com.chen.common.app.IApp;
 import com.chen.common.di.component.AppComponent;
 
 
@@ -16,7 +17,7 @@ public class CUtils {
 
     public static AppComponent obtainAppComponentFromContext(Context context) {
         Preconditions.checkNotNull(context, "%s cannot be null", Context.class.getName());
-        Preconditions.checkState(context.getApplicationContext() instanceof App, "Application does not implements App");
-        return ((App) context.getApplicationContext()).getAppComponent();
+        Preconditions.checkState(context.getApplicationContext() instanceof IApp, "Application does not implements App");
+        return ((IApp) context.getApplicationContext()).getAppComponent();
     }
 }
