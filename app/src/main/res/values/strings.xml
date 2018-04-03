@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">回天IM</string>
+
+    <string-array name="messages_array">
+        <item>你好！</item>
+        <item>hi，你好！</item>
+        <item>今天去玩吗？</item>
+        <item>老司机又开车？</item>
+        <item>呵呵</item>
+        <item>去就去</item>
+        <item>可以</item>
+        <item>gogogo</item>
+    </string-array>
+</resources>

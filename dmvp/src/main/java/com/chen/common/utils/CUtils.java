@@ -1,0 +1,22 @@
+package com.chen.common.utils;
+
+import android.content.Context;
+
+import com.chen.common.app.App;
+import com.chen.common.di.component.AppComponent;
+
+
+/**
+ * @author :ChenYangYi
+ * @time :2018/4/2
+ * @desc :常用的方法工具类
+ */
+
+public class CUtils {
+
+    public static AppComponent obtainAppComponentFromContext(Context context) {
+        Preconditions.checkNotNull(context, "%s cannot be null", Context.class.getName());
+        Preconditions.checkState(context.getApplicationContext() instanceof App, "Application does not implements App");
+        return ((App) context.getApplicationContext()).getAppComponent();
+    }
+}
