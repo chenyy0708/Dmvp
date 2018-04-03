@@ -7,14 +7,14 @@
 ## 导入地址
 `compile 'com.github.chenyy0708:DMvp:lastVersion'`
 
-> 在app的build.grdle文件中添加,dagger2[最新版本号](https://github.com/google/dagger) <br>
+> 在app的build.grdle文件中添加,[dagger2最新版本号](https://github.com/google/dagger) <br>
 
 ` annotationProcessor 'com.google.dagger:dagger-compiler:2.x' // 编译代码使用`
 
 
 # 使用方式
 
-##1.1 配置Application，设置url地址
+## 1.1 配置Application，设置url地址
 
 > Application需要实现IAPP接口，在BaseActivity中会根据IAPP获取到全局的Application，用于初始化，最后记得在AndroidManifest文件中声明。
 
