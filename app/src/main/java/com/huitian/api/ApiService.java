@@ -3,9 +3,9 @@ package com.huitian.api;
 
 import com.huitian.bean.MeizhiData;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * des:ApiService

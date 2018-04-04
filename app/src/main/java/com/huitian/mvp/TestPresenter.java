@@ -38,7 +38,7 @@ public class TestPresenter extends BasePresenter<TestContract.View, TestContract
     }
 
     public void getData(int page) {
-        mRxManage.add(mModel.getMeizhi(page)
+        mModel.getMeizhi(page)
                 .subscribe(new RxSubscriber<MeizhiData>(mContext, true) {
                     @Override
                     protected void _onNext(MeizhiData meizhiData) {
@@ -50,6 +50,6 @@ public class TestPresenter extends BasePresenter<TestContract.View, TestContract
                     protected void _onError(String message) {
                         mView.showErrorTip(message);
                     }
-                }));
+                });
     }
 }

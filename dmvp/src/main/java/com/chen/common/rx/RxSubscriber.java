@@ -8,28 +8,18 @@ import com.chen.common.app.BaseApplication;
 import com.chen.common.utils.NetWorkUtils;
 import com.chen.common.widget.LoadingDialog;
 
-import rx.Subscriber;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * des:订阅封装
- * Created by xsf
- * on 2016.09.10:16
+ * modify by ChenYangYi
+ * on 2018/4/4  修改Rxjava1  to   Rxjava2
  */
 
 /********************使用例子********************/
-/*_apiService.login(mobile, verifyCode)
-        .//省略
-        .subscribe(new RxSubscriber<User user>(mContext,false) {
-@Override
-public void _onNext(User user) {
-        // 处理user
-        }
-
-@Override
-public void _onError(String msg) {
-        ToastUtil.showShort(mActivity, msg);
-        });*/
-public abstract class RxSubscriber<T> extends Subscriber<T> {
+public abstract class RxSubscriber<T> implements Observer<T> {
 
     private Context mContext;
     private String msg;
@@ -61,14 +51,14 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     }
 
     @Override
-    public void onCompleted() {
+    public void onComplete() {
         if (showDialog)
             LoadingDialog.cancelDialogForLoading();
     }
 
+
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onSubscribe(Disposable d) {
         if (showDialog) {
             try {
                 LoadingDialog.showDialogForLoading((Activity) mContext, msg, true);
@@ -77,7 +67,6 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
             }
         }
     }
-
 
     @Override
     public void onNext(T t) {
