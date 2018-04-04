@@ -53,6 +53,7 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
         recyclerView.setAdapter(mAdapter);
         bt.setVisibility(View.VISIBLE);
         mPresenter.getData(10);
+        // test
     }
 
     @Override
