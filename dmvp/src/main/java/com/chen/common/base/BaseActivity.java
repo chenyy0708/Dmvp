@@ -43,6 +43,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         mContext = this;
         setupActivityComponent(CUtils.obtainAppComponentFromContext(mContext)); // dagger2注入
         this.initData(savedInstanceState);
+
     }
 
     /**
