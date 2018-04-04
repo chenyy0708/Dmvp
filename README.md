@@ -1,6 +1,6 @@
 # DMvp
 
-## 基于mvp + retrofit + rxjava1 + dagger2的一个简单开发框架 (我是菜比  我是菜比 我是菜比，重要的事情说三遍！)
+## 基于mvp + retrofit + rxjava2 + dagger2的一个简单开发框架 (我是菜比  我是菜比 我是菜比，重要的事情说三遍！)
 
 [![](https://jitpack.io/v/chenyy0708/DMvp.svg)](https://jitpack.io/#chenyy0708/DMvp)
 
