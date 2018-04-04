@@ -8,6 +8,7 @@ import com.chen.common.di.component.AppComponent;
 import com.chen.common.di.component.DaggerAppComponent;
 import com.chen.common.di.module.AppModule;
 import com.chen.common.di.module.NetModule;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * @author :ChenYangYi
@@ -22,6 +23,12 @@ public class App extends BaseApplication implements IApp {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
         appComponent = DaggerAppComponent
                 .builder()
                 .appModule(new AppModule(this))

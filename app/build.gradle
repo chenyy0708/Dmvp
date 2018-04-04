@@ -1,7 +1,15 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+
     defaultConfig {
         applicationId "com.huitian.im"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
@@ -44,6 +52,9 @@ dependencies {
 //    compile 'com.github.chenyy0708:DMvp:v1.0.1'
     api 'com.android.support.constraint:constraint-layout:1.0.2'
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
+    // leakcanary
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
 
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"] // 编译代码
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
