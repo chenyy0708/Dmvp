@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -23,8 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.BindView;
 
 /**
  * @author :ChenYangYi
@@ -33,15 +30,14 @@ import butterknife.ButterKnife;
  */
 
 public class TestFragment extends BaseFragment<TestPresenter> implements TestContract.View {
-    @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @Bind(R.id.bt)
-    Button bt;
     @Inject
     BaseQuickAdapter mAdapter;
     @Inject
     RecyclerView.LayoutManager mLayoutManager;
-
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.bt)
+    Button bt;
 
 
     @Override
@@ -83,17 +79,4 @@ public class TestFragment extends BaseFragment<TestPresenter> implements TestCon
         return getActivity();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
 }

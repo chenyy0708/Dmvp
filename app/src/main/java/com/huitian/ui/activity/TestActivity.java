@@ -21,8 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.BindView;
 
 /**
  * @author :ChenYangYi
@@ -31,13 +30,13 @@ import butterknife.ButterKnife;
  */
 
 public class TestActivity extends BaseActivity<TestPresenter> implements TestContract.View {
-    @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
     @Inject
     BaseQuickAdapter mAdapter;
     @Inject
     RecyclerView.LayoutManager mLayoutManager;
-    @Bind(R.id.bt)
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.bt)
     Button bt;
 
     @Override

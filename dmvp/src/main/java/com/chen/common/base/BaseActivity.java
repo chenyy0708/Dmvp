@@ -9,18 +9,19 @@ import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
-import com.jaeger.library.StatusBarUtil;
 import com.chen.common.R;
 import com.chen.common.app.AppManager;
+import com.chen.common.di.component.AppComponent;
 import com.chen.common.rx.RxManager;
 import com.chen.common.utils.CUtils;
 import com.chen.common.utils.ToastUitl;
 import com.chen.common.widget.LoadingDialog;
-import com.chen.common.di.component.AppComponent;
+import com.jaeger.library.StatusBarUtil;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Activity基类
@@ -31,13 +32,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Inject
     public RxManager mRxManager;
     public Context mContext;
+    private Unbinder unbinder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         doBeforeSetcontentView();
         setContentView(getLayoutId());
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         mContext = this;
         setupActivityComponent(CUtils.obtainAppComponentFromContext(mContext)); // dagger2注入
         this.initData(savedInstanceState);
@@ -180,8 +182,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (mPresenter != null)
             mPresenter.onDestroy();
         if (mRxManager != null)
-        mRxManager.clear();
-        ButterKnife.unbind(this);
+            mRxManager.clear();
+        if (unbinder != null && unbinder != Unbinder.EMPTY)
+            unbinder.unbind();
+        this.unbinder = null;
         AppManager.getAppManager().finishActivity(this);
     }
 }

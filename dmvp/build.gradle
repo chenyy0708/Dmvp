@@ -58,7 +58,9 @@ dependencies {
     // dagger2
     compile rootProject.ext.dependencies["dagger2"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
-    compile 'com.jakewharton:butterknife:7.0.1'//view注解
+    // butterknife
+    compile rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     compile 'com.jaeger.statusbaruitl:library:1.3.6' // 沉浸式状态栏
     compile 'com.android.support:multidex:1.0.1'
 }

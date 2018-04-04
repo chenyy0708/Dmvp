@@ -10,7 +10,8 @@ import com.chen.common.di.component.AppComponent;
 import com.huitian.chen.R;
 import com.huitian.ui.fragment.TestFragment;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * @author :ChenYangYi
@@ -19,7 +20,8 @@ import butterknife.Bind;
  */
 
 public class TestFragmentActivity extends BaseActivity {
-    @Bind(R.id.fl_container)
+
+    @BindView(R.id.fl_container)
     FrameLayout flContainer;
 
     @Override
@@ -43,4 +45,5 @@ public class TestFragmentActivity extends BaseActivity {
     public void setupActivityComponent(AppComponent appComponent) {
 
     }
+
 }

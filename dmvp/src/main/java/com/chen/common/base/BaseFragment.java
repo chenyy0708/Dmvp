@@ -18,6 +18,7 @@ import com.chen.common.utils.ToastUitl;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * des:基类fragment
@@ -30,13 +31,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public T mPresenter;
     @Inject
     public RxManager mRxManager;
+    private Unbinder unbinder;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         setupActivityComponent(CUtils.obtainAppComponentFromContext(getActivity())); // dagger2注入
         this.initData(savedInstanceState);
         return rootView;
@@ -163,7 +165,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        if (unbinder != null && unbinder != Unbinder.EMPTY)
+            unbinder.unbind();
+        this.unbinder = null;
         if (mPresenter != null)
             mPresenter.onDestroy();
         if (mPresenter != null)

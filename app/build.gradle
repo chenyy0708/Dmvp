@@ -46,5 +46,6 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
 
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"] // 编译代码
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     testCompile 'junit:junit:4.12'
 }
