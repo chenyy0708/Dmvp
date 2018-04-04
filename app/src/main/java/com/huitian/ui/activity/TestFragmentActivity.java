@@ -3,6 +3,7 @@ package com.huitian.ui.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.chen.common.base.BaseActivity;
@@ -11,7 +12,13 @@ import com.huitian.chen.R;
 import com.huitian.ui.fragment.TestFragment;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author :ChenYangYi
@@ -40,7 +47,6 @@ public class TestFragmentActivity extends BaseActivity {
 //提交事务
         fragmentTransactiontwo.commit();
     }
-
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
 

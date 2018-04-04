@@ -12,7 +12,6 @@ import android.view.Window;
 import com.chen.common.R;
 import com.chen.common.app.AppManager;
 import com.chen.common.di.component.AppComponent;
-import com.chen.common.rx.RxManager;
 import com.chen.common.utils.CUtils;
 import com.chen.common.utils.ToastUitl;
 import com.chen.common.widget.LoadingDialog;
@@ -29,8 +28,6 @@ import butterknife.Unbinder;
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
     @Inject
     public T mPresenter; // 注入得到presenter的实例对象
-    @Inject
-    public RxManager mRxManager;
     public Context mContext;
     private Unbinder unbinder;
 
@@ -182,8 +179,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         super.onDestroy();
         if (mPresenter != null)
             mPresenter.onDestroy();
-        if (mRxManager != null)
-            mRxManager.clear();
         if (unbinder != null && unbinder != Unbinder.EMPTY)
             unbinder.unbind();
         this.unbinder = null;

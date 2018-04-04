@@ -2,7 +2,6 @@ package com.chen.common.base;
 
 import android.content.Context;
 
-import com.chen.common.rx.RxManager;
 import com.chen.common.utils.Preconditions;
 
 /**
@@ -14,7 +13,6 @@ public abstract class BasePresenter<T, E> {
     public Context mContext;
     public E mModel;
     public T mView;
-    public RxManager mRxManage = new RxManager();
 
     /**
      * 如果当前页面同时需要 Model 层和 View 层,则使用此构造函数(默认)
@@ -34,6 +32,5 @@ public abstract class BasePresenter<T, E> {
     }
 
     public void onDestroy() {
-        mRxManage.clear();
     }
 }
