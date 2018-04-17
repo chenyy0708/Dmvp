@@ -2,14 +2,13 @@ package com.huitian.mvp;
 
 import com.chen.common.di.ActivityScope;
 import com.chen.common.rx.IRetrofitManager;
+import com.chen.common.rx.RxHelper;
 import com.huitian.api.ApiService;
 import com.huitian.bean.MeizhiData;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -31,7 +30,6 @@ public class TestModel implements TestContract.Model {
     public Observable<MeizhiData> getMeizhi(int page) {
         return retrofitManager.obtainRetrofitService(ApiService.class)
                 .getMeizhiData(page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(RxHelper.io_main());
     }
 }

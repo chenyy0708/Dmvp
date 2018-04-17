@@ -8,8 +8,7 @@ import com.chen.common.app.BaseApplication;
 import com.chen.common.utils.NetWorkUtils;
 import com.chen.common.widget.LoadingDialog;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 
 
 /**
@@ -19,7 +18,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 /********************使用例子********************/
-public abstract class RxSubscriber<T> implements Observer<T> {
+public abstract class RxSubscriber<T> extends DisposableObserver<T> {
 
     private Context mContext;
     private String msg;
@@ -56,9 +55,8 @@ public abstract class RxSubscriber<T> implements Observer<T> {
             LoadingDialog.cancelDialogForLoading();
     }
 
-
     @Override
-    public void onSubscribe(Disposable d) {
+    protected void onStart() {
         if (showDialog) {
             try {
                 LoadingDialog.showDialogForLoading((Activity) mContext, msg, true);

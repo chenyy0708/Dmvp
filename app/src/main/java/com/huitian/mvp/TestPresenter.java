@@ -38,8 +38,8 @@ public class TestPresenter extends BasePresenter<TestContract.View, TestContract
     }
 
     public void getData(int page) {
-        mModel.getMeizhi(page)
-                .subscribe(new RxSubscriber<MeizhiData>(mContext, true) {
+        mRxManager.add(mModel.getMeizhi(page)
+                .subscribeWith(new RxSubscriber<MeizhiData>(mContext, true) {
                     @Override
                     protected void _onNext(MeizhiData meizhiData) {
                         mData.addAll(meizhiData.results);
@@ -50,6 +50,19 @@ public class TestPresenter extends BasePresenter<TestContract.View, TestContract
                     protected void _onError(String message) {
                         mView.showErrorTip(message);
                     }
-                });
+                }));
+        // 两种写法都可以，用于处理Rxjava2可能会引起的内存泄露问题
+//        mRxManager.add(RxHelper.subscribe(mModel.getMeizhi(page), new RxSubscriber<MeizhiData>(mContext,true) {
+//            @Override
+//            protected void _onNext(MeizhiData meizhiData) {
+//                mData.addAll(meizhiData.results);
+//                mAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            protected void _onError(String message) {
+//                mView.showErrorTip(message);
+//            }
+//        }));
     }
 }

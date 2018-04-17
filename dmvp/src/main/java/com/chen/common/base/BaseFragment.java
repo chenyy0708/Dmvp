@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chen.common.R;
-import com.chen.common.widget.LoadingDialog;
 import com.chen.common.di.component.AppComponent;
+import com.chen.common.rx.RxManager;
 import com.chen.common.utils.CUtils;
 import com.chen.common.utils.ToastUitl;
+import com.chen.common.widget.LoadingDialog;
 
 import javax.inject.Inject;
 
@@ -28,6 +29,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     protected View rootView;
     @Inject
     public T mPresenter;
+    @Inject
+    public RxManager mRxManager;
     private Unbinder unbinder;
 
     @Nullable
@@ -167,6 +170,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
         this.unbinder = null;
         if (mPresenter != null)
             mPresenter.onDestroy();
+        if (mRxManager != null)
+            mRxManager.clear();
     }
 
 
