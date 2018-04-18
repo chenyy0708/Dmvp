@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import com.chen.common.base.BaseModel;
 import com.chen.common.base.BaseView;
-import com.huitian.bean.BaseEntry;
 import com.huitian.bean.HomeArticleBean;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import io.reactivex.Observable;
 
@@ -29,6 +29,13 @@ public interface ArticleContract {
          * @return View
          */
         Activity getVActivity();
+
+        /**
+         * 在P中获取View的刷新控件
+         *
+         * @return 刷新控件
+         */
+        SmartRefreshLayout getRefreshLayout();
     }
 
     /**

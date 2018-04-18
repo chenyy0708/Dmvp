@@ -11,6 +11,7 @@ import com.chen.common.di.component.AppComponent;
 import com.huitian.chen.R;
 import com.huitian.mvp.ArticleContract;
 import com.huitian.mvp.ArticlePresenter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import javax.inject.Inject;
 
@@ -42,7 +43,7 @@ public class TestFragment extends BaseFragment<ArticlePresenter> implements Arti
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-        mPresenter.getData(10);
+        mPresenter.getData();
     }
 
     @Override
@@ -60,6 +61,11 @@ public class TestFragment extends BaseFragment<ArticlePresenter> implements Arti
     @Override
     public Activity getVActivity() {
         return getActivity();
+    }
+
+    @Override
+    public SmartRefreshLayout getRefreshLayout() {
+        return null;
     }
 
 }

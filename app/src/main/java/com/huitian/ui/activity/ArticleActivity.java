@@ -2,8 +2,6 @@ package com.huitian.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 
 import com.chen.common.base.BaseActivity;
@@ -15,8 +13,6 @@ import com.huitian.mvp.ArticleContract;
 import com.huitian.mvp.ArticlePresenter;
 import com.huitian.ui.adapter.ArticleAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import javax.inject.Inject;
 
@@ -48,23 +44,9 @@ public class ArticleActivity extends BaseActivity<ArticlePresenter> implements A
         recyclerView.setLayoutManager(mLayoutManager);
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        // 全局Adapter，由Module提供  跟Activity生命周期一样
         recyclerView.setAdapter(mAdapter);
-        mPresenter.getData(5);
-        // test
-        refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                mPresenter.loadData(5);
-                refreshLayout.finishLoadMore();
-            }
-
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                mPresenter.getData(5);
-                refreshLayout.finishRefresh();
-            }
-        });
+        mPresenter.getData();
     }
 
     @Override
@@ -85,6 +67,11 @@ public class ArticleActivity extends BaseActivity<ArticlePresenter> implements A
     @Override
     public Activity getVActivity() {
         return this;
+    }
+
+    @Override
+    public SmartRefreshLayout getRefreshLayout() {
+        return refreshLayout;
     }
 
 }

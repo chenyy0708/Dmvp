@@ -27,15 +27,14 @@ public class App extends BaseApplication implements IApp {
      * http://www.wanandroid.com/blog/show/2
      */
     public static final String SERVICE_URL = "http://www.wanandroid.com/";
+
     //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
             //全局设置主题颜色
             layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
-            MaterialHeader materialHeader = new MaterialHeader(context);
-            materialHeader.setColorSchemeColors(R.color.colorPrimary);
-            return materialHeader;
+            return new MaterialHeader(context).setColorSchemeColors(R.color.colorPrimary);
         });
         //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
