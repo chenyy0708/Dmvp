@@ -2,9 +2,9 @@ package com.huitian.mvp;
 
 import com.chen.common.di.ActivityScope;
 import com.chen.common.rx.IRetrofitManager;
-import com.chen.common.rx.RxHelper;
 import com.huitian.api.ApiService;
-import com.huitian.bean.MeizhiData;
+import com.huitian.bean.HomeArticleBean;
+import com.huitian.rx.RxHelper;
 
 import javax.inject.Inject;
 
@@ -17,19 +17,19 @@ import io.reactivex.Observable;
  * @desc :
  */
 @ActivityScope
-public class TestModel implements TestContract.Model {
+public class ArticleModel implements ArticleContract.Model {
 
     private IRetrofitManager retrofitManager;
 
     @Inject
-    public TestModel(IRetrofitManager retrofitManager) {
+    public ArticleModel(IRetrofitManager retrofitManager) {
         this.retrofitManager = retrofitManager;
     }
 
     @Override
-    public Observable<MeizhiData> getMeizhi(int page) {
+    public Observable<HomeArticleBean> getHomeArticleList(int page) {
         return retrofitManager.obtainRetrofitService(ApiService.class)
-                .getMeizhiData(page)
-                .compose(RxHelper.io_main());
+                .getHomeArticleList(page)
+                .compose(RxHelper.handleResult());
     }
 }

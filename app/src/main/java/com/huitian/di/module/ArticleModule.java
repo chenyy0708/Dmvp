@@ -5,11 +5,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.di.ActivityScope;
-import com.huitian.bean.Meizhi;
+import com.huitian.bean.ArticleDatas;
 import com.huitian.chen.R;
-import com.huitian.mvp.TestContract;
-import com.huitian.mvp.TestModel;
-import com.huitian.ui.adapter.UserDetailAdapter;
+import com.huitian.mvp.ArticleContract;
+import com.huitian.mvp.ArticleModel;
+import com.huitian.ui.adapter.ArticleAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,41 +24,35 @@ import dagger.Provides;
  */
 
 @Module
-public class TestModule {
+public class ArticleModule {
 
-    private TestContract.View view;
+    private ArticleContract.View view;
 
     /**
      * 构建 UserModule 时,将 View 的实现类传进来,这样就可以提供 View 的实现类给 Presenter
      *
      * @param view
      */
-    public TestModule(TestContract.View view) {
+    public ArticleModule(ArticleContract.View view) {
         this.view = view;
     }
 
     @ActivityScope
     @Provides
-    TestContract.View provideTestView() {
+    ArticleContract.View provideTestView() {
         return this.view;
     }
 
     @ActivityScope
     @Provides
-    TestContract.Model provideTestModel(TestModel model) {
+    ArticleContract.Model provideTestModel(ArticleModel model) {
         return model;
     }
 
     @ActivityScope
     @Provides
-    BaseQuickAdapter provideUserDetailAdapter(List<Meizhi> list) {
-        return new UserDetailAdapter(R.layout.item_user_detail, list);
-    }
-
-    @ActivityScope
-    @Provides
-    List<Meizhi> provideUserDetailList() {
-        return new ArrayList<>();
+    ArticleAdapter provideArticleAdapter() {
+        return new ArticleAdapter(R.layout.item_user_detail, new ArrayList<>());
     }
 
     @ActivityScope

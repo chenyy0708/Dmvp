@@ -50,13 +50,15 @@ dependencies {
     })
     api project(':dmvp')
 //    compile 'com.github.chenyy0708:DMvp:v1.0.1'
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
     // leakcanary
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
 
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"] // 编译代码
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-4'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-4'//没有使用特殊Header，可以不加这行
     testCompile 'junit:junit:4.12'
 }

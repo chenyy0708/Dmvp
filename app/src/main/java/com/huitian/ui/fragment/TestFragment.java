@@ -4,20 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.base.BaseFragment;
 import com.chen.common.di.component.AppComponent;
-import com.huitian.bean.Meizhi;
 import com.huitian.chen.R;
-import com.huitian.di.component.DaggerTestComponent;
-import com.huitian.di.module.TestModule;
-import com.huitian.mvp.TestContract;
-import com.huitian.mvp.TestPresenter;
-
-import java.util.List;
+import com.huitian.mvp.ArticleContract;
+import com.huitian.mvp.ArticlePresenter;
 
 import javax.inject.Inject;
 
@@ -29,20 +22,17 @@ import butterknife.BindView;
  * @desc :
  */
 
-public class TestFragment extends BaseFragment<TestPresenter> implements TestContract.View {
+public class TestFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View {
     @Inject
     BaseQuickAdapter mAdapter;
     @Inject
     RecyclerView.LayoutManager mLayoutManager;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.bt)
-    Button bt;
-
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_user_detail;
+        return R.layout.activity_article_list;
     }
 
     @Override
@@ -53,16 +43,11 @@ public class TestFragment extends BaseFragment<TestPresenter> implements TestCon
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
         mPresenter.getData(10);
-        bt.setVisibility(View.GONE);
     }
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-        DaggerTestComponent.builder()
-                .appComponent(appComponent)
-                .testModule(new TestModule(this))
-                .build()
-                .inject(this);
+
     }
 
     @Override
@@ -70,9 +55,7 @@ public class TestFragment extends BaseFragment<TestPresenter> implements TestCon
         showShortToast(msg);
     }
 
-    @Override
-    public void setData(List<Meizhi> mData) {
-    }
+
 
     @Override
     public Activity getVActivity() {

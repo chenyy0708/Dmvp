@@ -1,4 +1,7 @@
-package com.chen.common.rx;
+package com.huitian.rx;
+
+import com.chen.common.rx.ServerException;
+import com.huitian.bean.BaseEntry;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -8,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -51,6 +55,7 @@ public class RxHelper {
 
     /**
      * 线程切换
+     *
      * @param <T>
      * @return
      */
@@ -62,5 +67,68 @@ public class RxHelper {
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
+    }
+
+    /**
+     * Rx优雅处理服务器返回
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> ObservableTransformer<BaseEntry<T>, T> handleResult() {
+        return new ObservableTransformer<BaseEntry<T>, T>() {
+            @Override
+            public Observable<T> apply(Observable<BaseEntry<T>> upstream) {
+                return upstream.flatMap(new Function<BaseEntry<T>, Observable<T>>() {
+                    @Override
+                    public Observable<T> apply(BaseEntry<T> entry) throws Exception {
+                        if (entry.isSuccess()) {
+                            return createData(entry.getData());
+                        } else {
+                            return Observable.error(new ServerException(entry.getErrorMsg()));
+                        }
+                    }
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+
+            }
+        };
+    }
+
+//    /**
+//     * Rx优雅处理服务器返回
+//     *
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> ObservableTransformer<BaseEntry<T>, T> handleResult() {
+//        return upstream -> {
+//            return upstream.flatMap(result -> {
+//                        if (result.isSuccess()) {
+//                            return createData(result.getData());
+//                        } else {
+//                            return Observable.error(new ServerException(result.getErrorCode()));
+//                        }
+//                    }
+//            );
+//        };
+//    }
+
+    /**
+     * 创建成功的数据
+     *
+     * @param data
+     * @param <T>
+     * @return
+     */
+    private static <T> Observable<T> createData(final T data) {
+        return Observable.create(emitter -> {
+            try {
+                emitter.onNext(data);
+                emitter.onComplete();
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
+
     }
 }

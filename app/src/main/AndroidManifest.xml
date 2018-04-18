@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- 欢迎页 -->
-        <activity android:name="com.huitian.ui.activity.TestActivity">
+        <activity android:name="com.huitian.ui.activity.ArticleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

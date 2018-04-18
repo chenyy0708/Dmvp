@@ -8,6 +8,10 @@ import com.chen.common.di.component.AppComponent;
 import com.chen.common.di.component.DaggerAppComponent;
 import com.chen.common.di.module.AppModule;
 import com.chen.common.di.module.NetModule;
+import com.huitian.chen.R;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -18,14 +22,32 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class App extends BaseApplication implements IApp {
     private AppComponent appComponent;
-    public static final String SERVICE_URL = "http://gank.io/api/";
+    /**
+     * WanAndroid 开放Api
+     * http://www.wanandroid.com/blog/show/2
+     */
+    public static final String SERVICE_URL = "http://www.wanandroid.com/";
+    //static 代码段可以防止内存泄露
+    static {
+        //设置全局的Header构建器
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
+            //全局设置主题颜色
+            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);
+            MaterialHeader materialHeader = new MaterialHeader(context);
+            materialHeader.setColorSchemeColors(R.color.colorPrimary);
+            return materialHeader;
+        });
+        //设置全局的Footer构建器
+        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
+            //指定为经典Footer，默认是 BallPulseFooter
+            return new ClassicsFooter(context).setDrawableSize(20);
+        });
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
             return;
         }
         LeakCanary.install(this);

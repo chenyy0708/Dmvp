@@ -2,22 +2,21 @@ package com.huitian.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.base.BaseActivity;
 import com.chen.common.di.component.AppComponent;
-import com.huitian.bean.Meizhi;
 import com.huitian.chen.R;
-import com.huitian.di.component.DaggerTestComponent;
-import com.huitian.di.module.TestModule;
-import com.huitian.mvp.TestContract;
-import com.huitian.mvp.TestPresenter;
-
-import java.util.List;
+import com.huitian.di.component.DaggerArticleComponent;
+import com.huitian.di.module.ArticleModule;
+import com.huitian.mvp.ArticleContract;
+import com.huitian.mvp.ArticlePresenter;
+import com.huitian.ui.adapter.ArticleAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import javax.inject.Inject;
 
@@ -26,22 +25,22 @@ import butterknife.BindView;
 /**
  * @author :ChenYangYi
  * @time :2018/4/2
- * @desc :
+ * @desc : 首页
  */
 
-public class TestActivity extends BaseActivity<TestPresenter> implements TestContract.View {
+public class ArticleActivity extends BaseActivity<ArticlePresenter> implements ArticleContract.View {
     @Inject
-    BaseQuickAdapter mAdapter;
+    ArticleAdapter mAdapter;
     @Inject
     RecyclerView.LayoutManager mLayoutManager;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.bt)
-    Button bt;
+    @BindView(R.id.refreshLayout)
+    SmartRefreshLayout refreshLayout;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_user_detail;
+        return R.layout.activity_article_list;
     }
 
     @Override
@@ -51,16 +50,28 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-        bt.setVisibility(View.VISIBLE);
-        mPresenter.getData(10);
+        mPresenter.getData(5);
         // test
+        refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mPresenter.loadData(5);
+                refreshLayout.finishLoadMore();
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mPresenter.getData(5);
+                refreshLayout.finishRefresh();
+            }
+        });
     }
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-        DaggerTestComponent.builder()
+        DaggerArticleComponent.builder()
                 .appComponent(appComponent)
-                .testModule(new TestModule(this))
+                .articleModule(new ArticleModule(this))
                 .build()
                 .inject(this);
     }
@@ -70,13 +81,6 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestCon
         showShortToast(msg);
     }
 
-    @Override
-    public void setData(List<Meizhi> mData) {
-    }
-
-    public void onClickFragment(View view) {
-        startActivity(TestFragmentActivity.class);
-    }
 
     @Override
     public Activity getVActivity() {

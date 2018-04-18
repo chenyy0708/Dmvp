@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1296DB</color>
+    <color name="colorPrimary">#FEE71D</color>
     <color name="colorPrimaryDark">#FA7C20</color>
     <color name="colorAccent">#FA7C20</color>
     <!--白天主题-->

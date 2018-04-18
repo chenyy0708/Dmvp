@@ -16,11 +16,12 @@
 package com.huitian.di.component;
 
 
+import android.support.v4.app.Fragment;
+
 import com.chen.common.di.ActivityScope;
 import com.chen.common.di.component.AppComponent;
-import com.huitian.di.module.TestModule;
-import com.huitian.ui.activity.TestActivity;
-import com.huitian.ui.fragment.TestFragment;
+import com.huitian.di.module.ArticleModule;
+import com.huitian.ui.activity.ArticleActivity;
 
 import dagger.Component;
 
@@ -35,8 +36,8 @@ import dagger.Component;
  * ================================================
  */
 @ActivityScope
-@Component(modules = TestModule.class, dependencies = AppComponent.class)
-public interface TestComponent {
-    void inject(TestActivity activity);
-    void inject(TestFragment testFragment);
+@Component(modules = ArticleModule.class, dependencies = AppComponent.class)
+public interface ArticleComponent {
+    void inject(ArticleActivity activity);
+    void inject(Fragment testFragment);
 }
