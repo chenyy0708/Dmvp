@@ -60,6 +60,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-4'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-4'//没有使用特殊Header，可以不加这行
-    compile 'com.github.SwiftyWang:TopToastBar:1.1.6' // 顶部错误提示弹框
+    implementation 'com.github.SwiftyWang:TopToastBar:1.1.6' // 顶部错误提示弹框
+    implementation 'me.majiajie:pager-bottom-tab-strip:2.2.5' // tab
     testCompile 'junit:junit:4.12'
 }

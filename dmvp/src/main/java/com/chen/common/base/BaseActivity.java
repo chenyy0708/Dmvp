@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.Window;
 
 import com.chen.common.app.AppManager;
@@ -48,6 +51,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         setContentView(getLayoutId());
         unbinder = ButterKnife.bind(this);
         mContext = this;
+        // 沉浸式状态栏
+        setStatusBar();
         // dagger2注入
         setupActivityComponent(CUtils.obtainAppComponentFromContext(mContext));
         this.initData(savedInstanceState);
@@ -63,42 +68,61 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 设置竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        // 沉浸式状态栏
-        setStatusBar();
     }
 
     /**
      * 默认Application中定义的沉浸式颜色
      */
-    private void setStatusBar() {
+    public void setStatusBar() {
         setStatusBar(ContextCompat.getColor(this, ((IApp) getApplicationContext()).getAppMainColor()));
     }
 
     /**
      * 设置状态栏颜色
      */
-    private void setStatusBar(@ColorInt int color) {
+    public void setStatusBar(@ColorInt int color) {
         StatusBarUtil.setColor(this, color, 122);
     }
 
     /*********************子类实现*****************************/
     /**
      * 获取布局文件
+     *
      * @return 布局文件
      */
     public abstract int getLayoutId();
 
     /**
      * 初始化view
+     *
      * @param savedInstanceState Bundle
      */
     public abstract void initData(Bundle savedInstanceState);
 
     /**
      * 提供 AppComponent 对象给 BaseActivity 的子类, 用于 Dagger2 的依赖注入
+     *
      * @param appComponent 全局Appcomponet
      */
     public abstract void setupActivityComponent(AppComponent appComponent);
+
+
+    /**
+     * 初始化 toolbar
+     *
+     * @param toolbar
+     */
+    protected void initToolbar(@NonNull Toolbar toolbar) {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
 
     /**
      * 通过Class跳转界面

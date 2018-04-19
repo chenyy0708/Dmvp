@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- 欢迎页 -->
-        <activity android:name="com.wanandroid.ui.activity.ArticleActivity">
+        <activity android:name="com.wanandroid.ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
