@@ -3,15 +3,12 @@ package com.huitian.mvp;
 import android.support.annotation.NonNull;
 
 import com.chen.common.base.BasePresenter;
-import com.chen.common.rx.RxSubscriber;
-import com.huitian.app.App;
+import com.chen.common.rx.BaseObserver;
 import com.huitian.bean.HomeArticleBean;
 import com.huitian.ui.adapter.ArticleAdapter;
 import com.huitian.utils.TUtils;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
-import com.swifty.toptoastbar.BottomToast;
-import com.swifty.toptoastbar.Toast;
 
 import javax.inject.Inject;
 
@@ -54,7 +51,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
         // 页码置为初始值 10
         page = 10;
         mRxManager.add(mModel.getHomeArticleList(page)
-                .subscribeWith(new RxSubscriber<HomeArticleBean>(mContext, true) {
+                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, true) {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.setNewData(articleBean.getDatas());
@@ -76,7 +73,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
         // 加载下10页数据
         page += 10;
         mRxManager.add(mModel.getHomeArticleList(page)
-                .subscribeWith(new RxSubscriber<HomeArticleBean>(mContext, true) {
+                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, true) {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.addData(articleBean.getDatas());

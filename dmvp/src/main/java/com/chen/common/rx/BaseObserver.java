@@ -15,44 +15,34 @@ import io.reactivex.observers.DisposableObserver;
  * des:订阅封装
  * modify by ChenYangYi
  * on 2018/4/4  修改Rxjava1  to   Rxjava2
- */
-
-/********************使用例子********************/
-public abstract class RxSubscriber<T> extends DisposableObserver<T> {
+ *
+ * @author HOREN
+ ********************/
+public abstract class BaseObserver<T> extends DisposableObserver<T> {
 
     private Context mContext;
     private String msg;
     private boolean showDialog = true;
 
-    /**
-     * 是否显示浮动dialog
-     */
-    public void showDialog() {
-        this.showDialog = true;
-    }
-
-    public void hideDialog() {
-        this.showDialog = true;
-    }
-
-    public RxSubscriber(Context context, String msg, boolean showDialog) {
+    private BaseObserver(Context context, String msg, boolean showDialog) {
         this.mContext = context;
         this.msg = msg;
         this.showDialog = showDialog;
     }
 
-    public RxSubscriber(Context context) {
+    public BaseObserver(Context context) {
         this(context, BaseApplication.getAppContext().getString(R.string.loading), true);
     }
 
-    public RxSubscriber(Context context, boolean showDialog) {
+    protected BaseObserver(Context context, boolean showDialog) {
         this(context, BaseApplication.getAppContext().getString(R.string.loading), showDialog);
     }
 
     @Override
     public void onComplete() {
-        if (showDialog)
+        if (showDialog) {
             LoadingDialog.cancelDialogForLoading();
+        }
     }
 
     @Override
@@ -73,15 +63,16 @@ public abstract class RxSubscriber<T> extends DisposableObserver<T> {
 
     @Override
     public void onError(Throwable e) {
-        if (showDialog)
+        if (showDialog) {
             LoadingDialog.cancelDialogForLoading();
+        }
         e.printStackTrace();
         //网络
         if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
             _onError(BaseApplication.getAppContext().getString(R.string.no_net));
         }
-        //服务器
-        else if (e instanceof ServerException) { // 得到自定义Error，取得失败信息
+        //服务器 得到自定义Error，取得失败信息
+        else if (e instanceof ServerException) {
             ServerException err = (ServerException) e;
             _onError(err.getMessage());
         }

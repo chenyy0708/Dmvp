@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
-import com.chen.common.R;
 import com.chen.common.app.AppManager;
+import com.chen.common.app.IApp;
 import com.chen.common.di.component.AppComponent;
 import com.chen.common.rx.RxManager;
 import com.chen.common.utils.CUtils;
@@ -41,7 +42,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         setContentView(getLayoutId());
         unbinder = ButterKnife.bind(this);
         mContext = this;
-        setupActivityComponent(CUtils.obtainAppComponentFromContext(mContext)); // dagger2注入
+        // dagger2注入
+        setupActivityComponent(CUtils.obtainAppComponentFromContext(mContext));
         this.initData(savedInstanceState);
     }
 
@@ -63,7 +65,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
      * 默认沉浸式主题色，
      */
     private void setStatusBar() {
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+        StatusBarUtil.setColor(this, ContextCompat.getColor(this, ((IApp) getApplicationContext()).getAppMainColor()), 0);
     }
 
     /**

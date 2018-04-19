@@ -1,6 +1,8 @@
 package com.huitian.app;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 
 import com.chen.common.app.BaseApplication;
 import com.chen.common.app.IApp;
@@ -17,7 +19,7 @@ import com.squareup.leakcanary.LeakCanary;
 /**
  * @author :ChenYangYi
  * @time :2018/4/3
- * @desc :
+ * @desc : APP入口Application
  */
 
 public class App extends BaseApplication implements IApp {
@@ -61,5 +63,11 @@ public class App extends BaseApplication implements IApp {
     @Override
     public AppComponent getAppComponent() {
         return appComponent;
+    }
+
+    @NonNull
+    @Override
+    public Integer getAppMainColor() {
+        return R.color.mainColor;
     }
 }
