@@ -39,5 +39,4 @@ import dagger.Component;
 @Component(modules = ArticleModule.class, dependencies = AppComponent.class)
 public interface ArticleComponent {
     void inject(ArticleActivity activity);
-    void inject(Fragment testFragment);
 }

@@ -1,4 +1,4 @@
-package com.wanandroid.mvp;
+package com.wanandroid.mvp.contract;
 
 import com.chen.common.di.ActivityScope;
 import com.chen.common.rx.IRetrofitManager;

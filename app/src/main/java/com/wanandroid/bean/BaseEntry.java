@@ -8,11 +8,11 @@ import java.io.Serializable;
  * @desc :WanAndroid Api 基类
  */
 public class BaseEntry<T> implements Serializable {
-    private String errorCode;
+    private int errorCode;
     private String errorMsg;
     private T data;
 
-    public String getErrorCode() {
+    public int getErrorCode() {
         return errorCode;
     }
 
@@ -25,6 +25,6 @@ public class BaseEntry<T> implements Serializable {
     }
 
     public boolean isSuccess() {
-        return errorCode.equals("0");
+        return errorCode >= 0;
     }
 }

@@ -9,8 +9,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.base.BaseFragment;
 import com.chen.common.di.component.AppComponent;
 import com.wanandroid.chen.R;
-import com.wanandroid.mvp.ArticleContract;
-import com.wanandroid.mvp.ArticlePresenter;
+import com.wanandroid.mvp.contract.ArticleContract;
+import com.wanandroid.mvp.contract.ArticlePresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import javax.inject.Inject;

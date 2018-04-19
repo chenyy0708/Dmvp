@@ -1,4 +1,4 @@
-package com.wanandroid.mvp;
+package com.wanandroid.mvp.contract;
 
 import android.app.Activity;
 

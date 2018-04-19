@@ -3,16 +3,13 @@ package com.wanandroid.di.module;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.di.ActivityScope;
-import com.wanandroid.bean.ArticleDatas;
 import com.wanandroid.chen.R;
-import com.wanandroid.mvp.ArticleContract;
-import com.wanandroid.mvp.ArticleModel;
+import com.wanandroid.mvp.contract.ArticleContract;
+import com.wanandroid.mvp.contract.ArticleModel;
 import com.wanandroid.ui.adapter.ArticleAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;

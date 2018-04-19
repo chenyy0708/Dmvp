@@ -1,4 +1,4 @@
-package com.wanandroid.mvp;
+package com.wanandroid.mvp.contract;
 
 import android.support.annotation.NonNull;
 
@@ -51,7 +51,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
         // 页码置为初始值 10
         page = 10;
         mRxManager.add(mModel.getHomeArticleList(page)
-                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, true) {
+                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.setNewData(articleBean.getDatas());
@@ -69,7 +69,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
     /**
      * 加载下一页数据
      */
-    public void loadData() {
+    private void loadData() {
         // 加载下10页数据
         page += 10;
         mRxManager.add(mModel.getHomeArticleList(page)
