@@ -49,7 +49,7 @@ public class ArticleModule {
     @ActivityScope
     @Provides
     ArticleAdapter provideArticleAdapter() {
-        return new ArticleAdapter(R.layout.item_user_detail, new ArrayList<>());
+        return new ArticleAdapter(R.layout.item_article, new ArrayList<>());
     }
 
     @ActivityScope

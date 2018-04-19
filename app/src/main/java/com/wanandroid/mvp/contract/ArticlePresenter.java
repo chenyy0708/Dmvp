@@ -4,11 +4,10 @@ import android.support.annotation.NonNull;
 
 import com.chen.common.base.BasePresenter;
 import com.chen.common.rx.BaseObserver;
-import com.wanandroid.bean.HomeArticleBean;
-import com.wanandroid.ui.adapter.ArticleAdapter;
-import com.wanandroid.utils.TUtils;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.wanandroid.bean.HomeArticleBean;
+import com.wanandroid.ui.adapter.ArticleAdapter;
 
 import javax.inject.Inject;
 
@@ -60,7 +59,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
 
                     @Override
                     protected void _onError(String message) {
-                        TUtils.show(mContext,message);
+                        mView.showErrorTip(message);
                         mView.getRefreshLayout().finishRefresh();
                     }
                 }));
@@ -84,7 +83,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
                     protected void _onError(String message) {
                         // 加载失败，页码减去10，防止遗漏数据
                         page -= 10;
-                        TUtils.show(mContext,message);
+                        mView.showErrorTip(message);
                         mView.getRefreshLayout().finishLoadMore();
                     }
                 }));

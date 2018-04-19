@@ -13,6 +13,7 @@ import com.wanandroid.di.module.ArticleModule;
 import com.wanandroid.mvp.contract.ArticleContract;
 import com.wanandroid.mvp.contract.ArticlePresenter;
 import com.wanandroid.ui.adapter.ArticleAdapter;
+import com.wanandroid.utils.SnackbarUtils;
 
 import javax.inject.Inject;
 
@@ -68,7 +69,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
 
     @Override
     public void showErrorTip(String msg) {
-        showShortToast(msg);
+        SnackbarUtils.showSnackMessage(getActivity(),msg);
     }
 
 
