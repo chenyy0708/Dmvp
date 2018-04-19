@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:srlEnableAutoLoadMore="false"
+    app:srlEnableFooterTranslationContent="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <com.scwang.smartrefresh.header.PhoenixHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -13,4 +20,8 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         tools:listitem="@layout/item_user_detail" />
+
+    <com.scwang.smartrefresh.header.TaurusHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

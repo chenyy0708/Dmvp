@@ -62,6 +62,11 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     public static final int SECOND = 1;
     public static final int THIRD = 2;
     public static final int FOUR = 3;
+    private String[] mTitles = {"首页", "知识体系", "导航", "项目"};
+    private Integer[] mIcons = {R.drawable.icon_home_pager_selected
+            , R.drawable.icon_knowledge_hierarchy_selected
+            , R.drawable.icon_navigation_selected
+            , R.drawable.icon_project_selected};
 
     @Override
     public int getLayoutId() {
@@ -71,10 +76,10 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         mNavigationController = pnvTab.material()
-                .addItem(R.drawable.icon_home_pager_selected, "首页")
-                .addItem(R.drawable.icon_knowledge_hierarchy_selected, "知识体系")
-                .addItem(R.drawable.icon_navigation_selected, "导航")
-                .addItem(R.drawable.icon_project_selected, "项目")
+                .addItem(mIcons[0], mTitles[0])
+                .addItem(mIcons[1], mTitles[1])
+                .addItem(mIcons[2], mTitles[2])
+                .addItem(mIcons[3], mTitles[3])
                 //这里可以设置样式模式，总共可以组合出4种效果
                 .setMode(MaterialMode.HIDE_TEXT)
                 .build();
@@ -91,6 +96,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
             @Override
             public void onSelected(int index, int old) {
                 showHideFragment(mFragments[index]);
+                commonToolbarTitleTv.setText(mTitles[index]);
             }
 
             @Override
@@ -138,14 +144,8 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
             mFragments[SECOND] = ArticleFragment.newInstance();
             mFragments[THIRD] = ArticleFragment.newInstance();
             mFragments[FOUR] = ArticleFragment.newInstance();
-            loadMultipleRootFragment(
-                    R.id.fragment_container,
-                    FIRST,
-                    mFragments[FIRST],
-                    mFragments[SECOND],
-                    mFragments[THIRD],
-                    mFragments[FOUR]
-            );
+            loadMultipleRootFragment(R.id.fragment_container, FIRST, mFragments[FIRST],
+                    mFragments[SECOND], mFragments[THIRD], mFragments[FOUR]);
         } else {
             // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
             mFragments[FIRST] = findFragment(ArticleFragment.class);

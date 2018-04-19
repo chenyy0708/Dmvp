@@ -73,7 +73,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
         // 加载下10页数据
         page += 10;
         mRxManager.add(mModel.getHomeArticleList(page)
-                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, true) {
+                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.addData(articleBean.getDatas());
