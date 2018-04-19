@@ -5,6 +5,8 @@
 [![](https://jitpack.io/v/chenyy0708/DMvp.svg)](https://jitpack.io/#chenyy0708/DMvp)
 
 
+## [WanAndroid](https://github.com/chenyy0708/DMvp/blob/rx2/README_WANANDROID.md)
+
 ## 导入地址
 `compile 'com.github.chenyy0708:DMvp:lastVersion'`
 
