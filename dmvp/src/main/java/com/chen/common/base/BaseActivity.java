@@ -28,8 +28,14 @@ import butterknife.Unbinder;
  * Activity基类
  */
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
+    /**
+     * 注入得到presenter的实例对象，需要setupActivityComponent注入，否则P为null
+     */
     @Inject
-    public T mPresenter; // 注入得到presenter的实例对象
+    public T mPresenter;
+    /**
+     * RxJava2内存泄露管理类，需要注入得到
+     */
     @Inject
     public RxManager mRxManager;
     public Context mContext;
@@ -62,27 +68,36 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
 
     /**
-     * 默认沉浸式主题色，
+     * 默认Application中定义的沉浸式颜色
      */
     private void setStatusBar() {
-        StatusBarUtil.setColor(this, ContextCompat.getColor(this, ((IApp) getApplicationContext()).getAppMainColor()), 0);
+        setStatusBar(ContextCompat.getColor(this, ((IApp) getApplicationContext()).getAppMainColor()));
     }
 
     /**
-     * 默认沉浸式主题色，
+     * 设置状态栏颜色
      */
     private void setStatusBar(@ColorInt int color) {
-        StatusBarUtil.setColor(this, color, 0);
+        StatusBarUtil.setColor(this, color, 122);
     }
 
     /*********************子类实现*****************************/
-    //获取布局文件
+    /**
+     * 获取布局文件
+     * @return 布局文件
+     */
     public abstract int getLayoutId();
 
-    //初始化view
+    /**
+     * 初始化view
+     * @param savedInstanceState Bundle
+     */
     public abstract void initData(Bundle savedInstanceState);
 
-    //这里提供 AppComponent 对象给 BaseActivity 的子类, 用于 Dagger2 的依赖注入
+    /**
+     * 提供 AppComponent 对象给 BaseActivity 的子类, 用于 Dagger2 的依赖注入
+     * @param appComponent 全局Appcomponet
+     */
     public abstract void setupActivityComponent(AppComponent appComponent);
 
     /**
