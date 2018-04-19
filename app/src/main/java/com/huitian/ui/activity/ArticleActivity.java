@@ -46,6 +46,7 @@ public class ArticleActivity extends BaseActivity<ArticlePresenter> implements A
         recyclerView.setHasFixedSize(true);
         // 全局Adapter，由Module提供  跟Activity生命周期一样
         recyclerView.setAdapter(mAdapter);
+        // 获取首页数据
         mPresenter.getData();
     }
 
