@@ -16,12 +16,10 @@
 package com.wanandroid.di.component;
 
 
-import android.support.v4.app.Fragment;
-
 import com.chen.common.di.ActivityScope;
 import com.chen.common.di.component.AppComponent;
 import com.wanandroid.di.module.ArticleModule;
-import com.wanandroid.ui.activity.ArticleActivity;
+import com.wanandroid.ui.activity.ArticleFragment;
 
 import dagger.Component;
 
@@ -38,5 +36,5 @@ import dagger.Component;
 @ActivityScope
 @Component(modules = ArticleModule.class, dependencies = AppComponent.class)
 public interface ArticleComponent {
-    void inject(ArticleActivity activity);
+    void inject(ArticleFragment activity);
 }

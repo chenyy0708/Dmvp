@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-import com.chen.common.base.BaseActivity;
+import com.chen.common.base.BaseFragment;
 import com.chen.common.di.component.AppComponent;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.wanandroid.chen.R;
 import com.wanandroid.di.component.DaggerArticleComponent;
 import com.wanandroid.di.module.ArticleModule;
 import com.wanandroid.mvp.contract.ArticleContract;
 import com.wanandroid.mvp.contract.ArticlePresenter;
 import com.wanandroid.ui.adapter.ArticleAdapter;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import javax.inject.Inject;
 
@@ -24,7 +24,7 @@ import butterknife.BindView;
  * @desc : 首页
  */
 
-public class ArticleActivity extends BaseActivity<ArticlePresenter> implements ArticleContract.View {
+public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View {
     @Inject
     ArticleAdapter mAdapter;
     @Inject
@@ -34,8 +34,15 @@ public class ArticleActivity extends BaseActivity<ArticlePresenter> implements A
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
 
+    public static ArticleFragment newInstance() {
+        Bundle args = new Bundle();
+        ArticleFragment fragment = new ArticleFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
-    public int getLayoutId() {
+    public int getLayoutResource() {
         return R.layout.activity_article_list;
     }
 
@@ -67,7 +74,7 @@ public class ArticleActivity extends BaseActivity<ArticlePresenter> implements A
 
     @Override
     public Activity getVActivity() {
-        return this;
+        return getActivity();
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.chen.common.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,14 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * des:基类fragment
  * Created by xsf
  * on 2016.07.12:38
  */
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter> extends SupportFragment {
     protected View rootView;
     @Inject
     public T mPresenter;
@@ -39,18 +39,32 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
         unbinder = ButterKnife.bind(this, rootView);
-        setupActivityComponent(CUtils.obtainAppComponentFromContext(getActivity())); // dagger2注入
-        this.initData(savedInstanceState);
         return rootView;
     }
 
-    //获取布局文件
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        setupActivityComponent(CUtils.obtainAppComponentFromContext(getActivity())); // dagger2注入
+        this.initData(savedInstanceState);
+    }
+
+    /**
+     * 获取布局文件
+     * @return 布局Res
+     */
     protected abstract int getLayoutResource();
 
-    //初始化view
+    /**
+     * 初始化view
+     * @param savedInstanceState Bundle
+     */
     public abstract void initData(Bundle savedInstanceState);
 
-    //这里提供 AppComponent 对象给 BaseActivity 的子类, 用于 Dagger2 的依赖注入
+    /**
+     * 这里提供 AppComponent 对象给 BaseActivity 的子类, 用于 Dagger2 的依赖注入
+     * @param appComponent AppComponent
+     */
     public abstract void setupActivityComponent(AppComponent appComponent);
 
 
