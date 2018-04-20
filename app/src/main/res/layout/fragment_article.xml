@@ -5,14 +5,11 @@
     android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    app:srlEnableAutoLoadMore="false"
-    app:srlEnableLoadMore="true"
+    app:srlEnableAutoLoadMore="true"
+    app:srlEnableScrollContentWhenLoaded="false"
     app:srlPrimaryColor="@color/colorPrimary"
     android:background="@color/colorBackground"
-    app:srlEnableScrollContentWhenLoaded="false"
-    app:srlEnableFooterTranslationContent="true">
+    >
 
     <com.scwang.smartrefresh.header.PhoenixHeader
         android:layout_width="match_parent"
