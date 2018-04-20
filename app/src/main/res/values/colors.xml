@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FEE71D</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#F5C50D</color>
+    <color name="colorPrimaryDark">#F5E00C</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#EEEEEE</color>
-    <color name="mainColor">#208af2</color>
 
+
+    <color name="colorCard">#FFFFFF</color>
+
+    <!--标题，副标题，内容文字颜色-->
+    <color name="colorTitle">#333333</color>
+    <color name="colorSubtitle">#666666</color>
+    <color name="colorContent">#999999</color>
+
+    <color name="grey_bg">#EDEDED</color>
+    <color name="blue_dark_btn">#009eff</color>
+    <color name="blue_btn">#35B0FF</color>
+    <color name="card_bac">#f7f3f3</color>
+    <color name="light_light_yellow">#dcd3ba</color>
+    <color name="light_yellow">#e7c054</color>
+    <color name="light_red">#e26d2e</color>
+    <color name="light_deep_red">#f9382a</color>
+    <color name="deep_red">#dc3b1f</color>
+    <color name="while_most_color">#e4e4e4</color>
+    <color name="blackish_green">#6D8FB0</color>
+    <color name="text_bg">#8F9AA8</color>
+
+    <color name="light_green">#3fc75f</color>
+    <color name="light_blue">#bf33efcd</color>
 </resources>

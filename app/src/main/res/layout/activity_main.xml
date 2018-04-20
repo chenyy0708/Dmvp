@@ -28,14 +28,16 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <FrameLayout
+            android:elevation="@dimen/dp_15"
+            android:background="#88ffffff"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_gravity="bottom">
 
             <com.github.mmin18.widget.RealtimeBlurView
                 android:layout_width="match_parent"
-                app:realtimeBlurRadius="2dp"
-                app:realtimeOverlayColor="#88ffffff"
+                app:realtimeBlurRadius="10dp"
+                app:realtimeOverlayColor="#44ffffff"
                 android:layout_height="match_parent" />
 
             <me.majiajie.pagerbottomtabstrip.PageNavigationView

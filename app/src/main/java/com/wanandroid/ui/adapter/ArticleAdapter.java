@@ -1,12 +1,12 @@
 package com.wanandroid.ui.adapter;
 
-import android.widget.ImageView;
+import android.text.Html;
+import android.text.TextUtils;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wanandroid.bean.ArticleDatas;
 import com.wanandroid.chen.R;
-import com.wanandroid.glide.GlideUtil;
 
 import java.util.List;
 
@@ -22,8 +22,18 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleDatas, BaseViewHolde
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, ArticleDatas item) {
-//        GlideUtil.loadUrl(mContext,
-//                "http://img1.imgtn.bdimg.com/it/u=1985628086,3753398067&fm=27&gp=0.jpg", (ImageView) helper.getView(R.id.iv_article));
+    protected void convert(BaseViewHolder helper, ArticleDatas article) {
+        if (!TextUtils.isEmpty(article.getTitle())) {
+            helper.setText(R.id.item_search_pager_title, Html.fromHtml(article.getTitle()));
+        }
+        if (!TextUtils.isEmpty(article.getAuthor())) {
+            helper.setText(R.id.item_search_pager_author, article.getAuthor());
+        }
+        if (!TextUtils.isEmpty(article.getChaptername())) {
+            String classifyName = article.getSuperchaptername() + " / " + article.getChaptername();
+        }
+        if (!TextUtils.isEmpty(article.getNicedate())) {
+            helper.setText(R.id.item_search_pager_niceDate, article.getNicedate());
+        }
     }
 }

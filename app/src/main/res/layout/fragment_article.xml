@@ -9,6 +9,7 @@
     android:orientation="vertical"
     app:srlEnableAutoLoadMore="false"
     app:srlEnableLoadMore="true"
+    app:srlPrimaryColor="@color/colorPrimary"
     android:background="@color/colorBackground"
     app:srlEnableScrollContentWhenLoaded="false"
     app:srlEnableFooterTranslationContent="true">
@@ -21,7 +22,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
+        android:background="@color/colorBackground"
         tools:listitem="@layout/item_article" />
 
     <com.scwang.smartrefresh.layout.footer.ClassicsFooter
