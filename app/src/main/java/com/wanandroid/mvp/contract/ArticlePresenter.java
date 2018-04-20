@@ -56,14 +56,14 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
                 .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
-                        mAdapter.setNewData(articleBean.getDatas());
-                        mView.getRefreshLayout().finishRefresh();
+                        mAdapter.replaceData(articleBean.getDatas());
+                        mView.getRefreshLayout().finishRefresh(1000);
                     }
 
                     @Override
                     protected void _onError(String message) {
                         mView.showErrorTip(message);
-                        mView.getRefreshLayout().finishRefresh();
+                        mView.getRefreshLayout().finishRefresh(1000);
                     }
                 }));
     }
@@ -99,7 +99,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.addData(articleBean.getDatas());
-                        mView.getRefreshLayout().finishLoadMore();
+                        mView.getRefreshLayout().finishLoadMore(1000);
                     }
 
                     @Override
@@ -107,7 +107,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
                         // 加载失败，页码减去10，防止遗漏数据
                         page -= 10;
                         mView.showErrorTip(message);
-                        mView.getRefreshLayout().finishLoadMore();
+                        mView.getRefreshLayout().finishLoadMore(1000);
                     }
                 }));
     }

@@ -3,12 +3,14 @@ package com.wanandroid.ui.activity.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.wanandroid.chen.R;
 import com.wanandroid.ui.activity.ArticleFragment;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import me.majiajie.pagerbottomtabstrip.MaterialMode;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
@@ -50,6 +53,8 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
     NavigationController mNavigationController;
+    @BindView(R.id.main_floating_action_btn)
+    FloatingActionButton mainFloatingActionBtn;
     private ActionBarDrawerToggle mDrawerToggle;
 
     /**
@@ -238,4 +243,16 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
         mDelegate.showHideFragment(showFragment);
     }
 
+    @OnClick(R.id.main_floating_action_btn)
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.main_floating_action_btn:
+                ArticleFragment articleFragments = (ArticleFragment) mFragments[mNavigationController.getSelected()];
+                articleFragments.jumpToRVTop();
+                break;
+            default:
+
+                break;
+        }
+    }
 }

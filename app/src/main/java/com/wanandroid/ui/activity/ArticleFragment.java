@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.base.BaseFragment;
 import com.chen.common.di.component.AppComponent;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -82,6 +83,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         recyclerView.setHasFixedSize(true);
         // 全局Adapter，由Module提供  跟Activity生命周期一样
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -146,5 +148,12 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
     @Override
     public void fillBannerItem(BGABanner banner, ImageView itemView, @Nullable BannerData model, int position) {
         GlideUtil.loadUrl(_mActivity, model.getImagepath(), itemView);
+    }
+
+    /**
+     * 滚动RV顶部
+     */
+    public void jumpToRVTop() {
+        recyclerView.smoothScrollToPosition(0);
     }
 }

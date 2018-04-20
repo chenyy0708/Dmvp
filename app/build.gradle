@@ -51,7 +51,7 @@ dependencies {
     api project(':dmvp')
 //    compile 'com.github.chenyy0708:DMvp:v1.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.5'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     // leakcanary
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     implementation rootProject.ext.dependencies["cardview-v7"]
@@ -60,8 +60,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"] // 编译代码
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-4'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-4'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
     // bottom tab
     implementation 'me.majiajie:pager-bottom-tab-strip:2.2.5' // tab
     // Glide
