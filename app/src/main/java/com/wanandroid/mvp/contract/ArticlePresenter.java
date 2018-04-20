@@ -51,7 +51,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
     @Override
     public void getData() {
         // 页码置为初始值 10
-        page = 10;
+        page = 0;
         mRxManager.add(mModel.getHomeArticleList(page)
                 .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
                     @Override
@@ -93,7 +93,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
     @Override
     public void loadData() {
         // 加载下10页数据
-        page += 10;
+        page += 1;
         mRxManager.add(mModel.getHomeArticleList(page)
                 .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
                     @Override

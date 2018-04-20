@@ -65,8 +65,6 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
         initRVAndHeader();
         // 获取首页数据
         refreshLayout.autoRefresh();
-        // 轮播图
-        mPresenter.getBanner();
     }
 
     /**
@@ -110,6 +108,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
     @Override
     public void setBanner(List<BannerData> bannerData) {
         ArrayList<String> mTips = new ArrayList<>();
+        // 提取文字
         for (BannerData bannerDatum : bannerData) {
             mTips.add(bannerDatum.getTitle());
         }

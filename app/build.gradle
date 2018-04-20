@@ -18,6 +18,7 @@ android {
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        renderscriptSupportModeEnabled true    // Enable RS support
     }
     buildTypes {
         release {
@@ -70,5 +71,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     // 轮播图
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+    implementation 'com.github.mmin18:realtimeblurview:1.1.0'
     testCompile 'junit:junit:4.12'
 }
