@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wanandroid.bean.ArticleDatas;
 import com.wanandroid.chen.R;
-import com.wanandroid.glide.GlideApp;
+import com.wanandroid.glide.GlideUtil;
 
 import java.util.List;
 
@@ -23,9 +23,7 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleDatas, BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, ArticleDatas item) {
-        GlideApp.with(mContext)
-                .load("http://img1.imgtn.bdimg.com/it/u=1985628086,3753398067&fm=27&gp=0.jpg")
-                .centerCrop()
-                .into((ImageView) helper.getView(R.id.iv_article));
+        GlideUtil.loadUrl(mContext,
+                "http://img1.imgtn.bdimg.com/it/u=1985628086,3753398067&fm=27&gp=0.jpg", (ImageView) helper.getView(R.id.iv_article));
     }
 }

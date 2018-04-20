@@ -2,9 +2,12 @@ package com.wanandroid.mvp.contract;
 
 import com.chen.common.di.ActivityScope;
 import com.chen.common.rx.IRetrofitManager;
-import com.wanandroid.api.ApiService;
+import com.wanandroid.api.WanAndroid;
+import com.wanandroid.bean.BannerData;
 import com.wanandroid.bean.HomeArticleBean;
 import com.wanandroid.rx.RxHelper;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -28,8 +31,15 @@ public class ArticleModel implements ArticleContract.Model {
 
     @Override
     public Observable<HomeArticleBean> getHomeArticleList(int page) {
-        return retrofitManager.obtainRetrofitService(ApiService.class)
+        return retrofitManager.obtainRetrofitService(WanAndroid.class)
                 .getHomeArticleList(page)
+                .compose(RxHelper.handleResult());
+    }
+
+    @Override
+    public Observable<List<BannerData>> getHomeBanner() {
+        return retrofitManager.obtainRetrofitService(WanAndroid.class)
+                .getHomeBanner()
                 .compose(RxHelper.handleResult());
     }
 }

@@ -2,12 +2,14 @@ package com.wanandroid.mvp.contract;
 
 import android.support.annotation.NonNull;
 
-import com.chen.common.base.BasePresenter;
 import com.chen.common.rx.BaseObserver;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.wanandroid.bean.BannerData;
 import com.wanandroid.bean.HomeArticleBean;
 import com.wanandroid.ui.adapter.ArticleAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -17,7 +19,7 @@ import javax.inject.Inject;
  * @desc :
  */
 
-public class ArticlePresenter extends BasePresenter<ArticleContract.View, ArticleContract.Model> {
+public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
 
     /**
      * 首页Adapter
@@ -46,6 +48,7 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
     /**
      * 加载第一页数据
      */
+    @Override
     public void getData() {
         // 页码置为初始值 10
         page = 10;
@@ -66,9 +69,29 @@ public class ArticlePresenter extends BasePresenter<ArticleContract.View, Articl
     }
 
     /**
+     * 首页轮播图
+     */
+    @Override
+    public void getBanner() {
+        mRxManager.add(mModel.getHomeBanner()
+                .subscribeWith(new BaseObserver<List<BannerData>>(mContext, false) {
+                    @Override
+                    protected void _onNext(List<BannerData> bannerData) {
+                        mView.setBanner(bannerData);
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+                        mView.showErrorTip(message);
+                    }
+                }));
+    }
+
+    /**
      * 加载下一页数据
      */
-    private void loadData() {
+    @Override
+    public void loadData() {
         // 加载下10页数据
         page += 10;
         mRxManager.add(mModel.getHomeArticleList(page)

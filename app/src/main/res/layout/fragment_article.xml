@@ -8,6 +8,9 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     app:srlEnableAutoLoadMore="false"
+    app:srlEnableLoadMore="true"
+    android:background="@color/colorBackground"
+    app:srlEnableScrollContentWhenLoaded="false"
     app:srlEnableFooterTranslationContent="true">
 
     <com.scwang.smartrefresh.header.PhoenixHeader
