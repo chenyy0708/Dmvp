@@ -2,8 +2,10 @@ package com.wanandroid.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -34,7 +36,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * @desc : 首页
  */
 
-public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View {
+public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate, BGABanner.Adapter<ImageView,BannerData> {
     @Inject
     ArticleAdapter mAdapter;
     @Inject
@@ -75,6 +77,8 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
         LinearLayout mHeaderGroup = ((LinearLayout) LayoutInflater.from(_mActivity).inflate(R.layout.header_home_banner, null));
         mBanner = mHeaderGroup.findViewById(R.id.banner);
         mHeaderGroup.removeView(mBanner);
+        mBanner.setAdapter(this);
+        mBanner.setDelegate(this);
         mAdapter.addHeaderView(mBanner);
         recyclerView.setLayoutManager(mLayoutManager);
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
@@ -105,9 +109,6 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
 
     @Override
     public void setBanner(List<BannerData> bannerData) {
-        mBanner.setAdapter((BGABanner.Adapter<ImageView, BannerData>) (banner, itemView, model, position) -> {
-            GlideUtil.loadUrl(_mActivity, model.getImagepath(), itemView);
-        });
         ArrayList<String> mTips = new ArrayList<>();
         for (BannerData bannerDatum : bannerData) {
             mTips.add(bannerDatum.getTitle());
@@ -136,5 +137,15 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
         if (mBanner != null) {
             mBanner.stopAutoPlay();
         }
+    }
+
+    @Override
+    public void onBannerItemClick(BGABanner banner, View itemView, @Nullable Object model, int position) {
+
+    }
+
+    @Override
+    public void fillBannerItem(BGABanner banner, ImageView itemView, @Nullable BannerData model, int position) {
+        GlideUtil.loadUrl(_mActivity, model.getImagepath(), itemView);
     }
 }

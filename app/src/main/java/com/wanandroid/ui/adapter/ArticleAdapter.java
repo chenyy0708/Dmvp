@@ -23,7 +23,7 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleDatas, BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, ArticleDatas item) {
-        GlideUtil.loadUrl(mContext,
-                "http://img1.imgtn.bdimg.com/it/u=1985628086,3753398067&fm=27&gp=0.jpg", (ImageView) helper.getView(R.id.iv_article));
+//        GlideUtil.loadUrl(mContext,
+//                "http://img1.imgtn.bdimg.com/it/u=1985628086,3753398067&fm=27&gp=0.jpg", (ImageView) helper.getView(R.id.iv_article));
     }
 }

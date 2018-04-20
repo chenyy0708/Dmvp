@@ -16,7 +16,6 @@
         app:banner_numberIndicatorTextSize="@dimen/text_14"
         app:banner_pageChangeDuration="1000"
         app:banner_pointAutoPlayInterval="3000"
-        app:banner_pointContainerBackground="#77666666"
         app:banner_pointTopBottomMargin="15dp"
         app:banner_tipTextSize="@dimen/text_14"
         app:banner_transitionEffect="depth" />

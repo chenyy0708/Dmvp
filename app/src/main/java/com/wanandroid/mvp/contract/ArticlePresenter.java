@@ -129,6 +129,8 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 // 刷新数据
                 getData();
+                // 轮播图
+                getBanner();
             }
         });
     }

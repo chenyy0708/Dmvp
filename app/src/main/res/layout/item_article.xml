@@ -7,10 +7,10 @@
     android:layout_marginStart="@dimen/dp_10"
     app:cardCornerRadius="@dimen/dp_2"
     app:cardElevation="@dimen/dp_3"
+    android:background="@color/white"
     app:cardUseCompatPadding="true">
 
     <ImageView
-        android:src="@mipmap/ic_launcher"
         android:id="@+id/iv_article"
         android:layout_width="match_parent"
         android:layout_height="150dp" />
