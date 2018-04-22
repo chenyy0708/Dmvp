@@ -91,6 +91,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
         initToolbar(commonToolbar);
         initDrawLayout();
         initNavigationTab();
+
     }
 
     /**
