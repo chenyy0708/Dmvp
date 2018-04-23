@@ -48,7 +48,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    api project(':dmvp')
+    implementation project(':dmvp')
 //    compile 'com.github.chenyy0708:DMvp:v1.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
@@ -75,5 +75,9 @@ dependencies {
     implementation 'com.github.mmin18:realtimeblurview:1.1.0'
     // 隐藏标题栏和导航栏
     implementation 'com.github.githubwing:ByeBurger:1.2.3'
+    // 点赞
+    implementation 'com.ldoublem.thumbUplib:ThumbUplib:0.5'
+    // 文字标签
+    implementation 'com.haozhang.libary:android-slanted-textview:1.2'
     testCompile 'junit:junit:4.12'
 }

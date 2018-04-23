@@ -17,78 +17,107 @@
     app:cardCornerRadius="@dimen/dp_3"
     app:cardElevation="@dimen/dp_2">
 
-    <android.support.constraint.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/dp_12">
+        android:layout_height="wrap_content">
 
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="43dp"
-            android:layout_height="31dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/icon_author" />
-
-        <TextView
-            android:maxLength="10"
-            android:id="@+id/item_article_author"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorSubtitle"
-            android:textSize="@dimen/text_14"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            tools:text="hongyang" />
+            android:padding="@dimen/dp_12">
 
-        <TextView
-            android:id="@+id/item_article_project_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="网络编程 / 网络架构"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/text_14"
-            app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
-            app:layout_constraintStart_toEndOf="@+id/item_article_author"
-            app:layout_constraintTop_toTopOf="@+id/item_article_author" />
 
-        <TextView
-            android:id="@+id/item_article_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8小时前"
-            android:textColor="@color/colorContent"
-            app:layout_constraintBottom_toBottomOf="@+id/item_article_project_type"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_article_project_type" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/icon_author" />
 
-        <TextView
-            android:id="@+id/item_article_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="android WebView详解，常见漏洞详解和安全源码"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/text_16"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:visibility="visible" />
+            <TextView
+                android:id="@+id/item_article_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxLength="10"
+                android:textColor="@color/colorSubtitle"
+                android:textSize="@dimen/text_14"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                tools:text="hongyang" />
 
-        <TextView
-            android:id="@+id/item_article_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="注册登录、用户信息、用户密码、用户图像修改、书籍分类、本地书籍扫描、书架、书籍搜索（作者名或书籍名）、书籍阅读（仅txt格式，暂不支持PDF等其他格式）、阅读字体、背景颜色、翻页效果等设置、意见反馈（反馈信息发送到我的邮箱）、应用版本更新"
-            android:textColor="@color/colorSubtitle"
-            android:textSize="@dimen/text_14"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_article_title"
-            tools:visibility="visible" />
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/item_article_project_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="网络编程 / 网络架构"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_14"
+                app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
+                app:layout_constraintStart_toEndOf="@+id/item_article_author"
+                app:layout_constraintTop_toTopOf="@+id/item_article_author" />
+
+            <TextView
+                android:id="@+id/item_article_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8小时前"
+                android:textColor="@color/colorContent"
+                app:layout_constraintBottom_toBottomOf="@+id/item_article_project_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/item_article_project_type" />
+
+            <TextView
+                android:id="@+id/item_article_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="android WebView详解，常见漏洞详解和安全源码"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/text_16"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/item_article_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="注册登录、用户信息、用户密码、用户图像修改、书籍分类、本地书籍扫描、书架、书籍搜索（作者名或书籍名）、书籍阅读（仅txt格式，暂不支持PDF等其他格式）、阅读字体、背景颜色、翻页效果等设置、意见反馈（反馈信息发送到我的邮箱）、应用版本更新"
+                android:textColor="@color/colorSubtitle"
+                android:textSize="@dimen/text_14"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_article_title"
+                tools:visibility="visible" />
+
+
+            <com.ldoublem.thumbUplib.ThumbUpView
+                android:id="@+id/item_article_collect"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                app:cracksColor="@color/white"
+                app:edgeColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_article_content" />
+        </android.support.constraint.ConstraintLayout>
+
+        <com.haozhang.lib.SlantedTextView
+            android:id="@+id/item_article_stv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right|bottom"
+            android:gravity="center"
+            app:slantedBackgroundColor="@color/colorPrimary"
+            app:slantedLength="20dp"
+            app:slantedMode="right_bottom"
+            app:slantedTextColor="@color/white"
+            app:slantedTextSize="@dimen/text_10" />
+    </FrameLayout>
 </android.support.v7.widget.CardView>

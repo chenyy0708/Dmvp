@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="text_8">8sp</dimen>
+    <dimen name="text_10">10sp</dimen>
     <dimen name="text_11">11sp</dimen>
     <dimen name="text_12">12sp</dimen>
     <dimen name="text_13">13sp</dimen>
