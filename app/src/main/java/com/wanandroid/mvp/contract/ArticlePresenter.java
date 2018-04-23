@@ -1,12 +1,15 @@
 package com.wanandroid.mvp.contract;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chen.common.rx.BaseObserver;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.wanandroid.bean.BannerData;
 import com.wanandroid.bean.HomeArticleBean;
+import com.wanandroid.ui.activity.webview.CommonWebViewActivity;
 import com.wanandroid.ui.adapter.ArticleAdapter;
 
 import java.util.List;
@@ -127,10 +130,17 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                // 刷新数据
-                getData();
                 // 轮播图
                 getBanner();
+                // 刷新数据
+                getData();
+            }
+        });
+        // Adapter 点击事件
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                CommonWebViewActivity.startAction(mContext, mAdapter.getData().get(position).getLink());
             }
         });
     }

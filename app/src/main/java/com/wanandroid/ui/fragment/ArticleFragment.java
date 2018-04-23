@@ -1,4 +1,4 @@
-package com.wanandroid.ui.activity;
+package com.wanandroid.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -80,8 +80,6 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
         mBanner.setDelegate(this);
         mAdapter.addHeaderView(mBanner);
         recyclerView.setLayoutManager(mLayoutManager);
-        //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
-        recyclerView.setHasFixedSize(true);
         // 全局Adapter，由Module提供  跟Activity生命周期一样
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         recyclerView.setAdapter(mAdapter);

@@ -84,5 +84,7 @@ dependencies {
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     // 头像
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    // webview
+    implementation 'com.just.agentweb:agentweb:4.0.2'
     testCompile 'junit:junit:4.12'
 }

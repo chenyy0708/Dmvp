@@ -81,7 +81,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
      * 设置状态栏颜色
      */
     public void setStatusBar(@ColorInt int color) {
-        StatusBarUtil.setColor(this, color, 122);
+        StatusBarUtil.setColor(this, color, 40);
     }
 
     /*********************子类实现*****************************/

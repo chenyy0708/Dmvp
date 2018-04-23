@@ -19,7 +19,7 @@ package com.wanandroid.di.component;
 import com.chen.common.di.ActivityScope;
 import com.chen.common.di.component.AppComponent;
 import com.wanandroid.di.module.ArticleModule;
-import com.wanandroid.ui.activity.ArticleFragment;
+import com.wanandroid.ui.fragment.ArticleFragment;
 
 import dagger.Component;
 

@@ -20,7 +20,7 @@ import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.jaeger.library.StatusBarUtil;
 import com.wanandroid.chen.R;
 import com.wanandroid.glide.GlideUtil;
-import com.wanandroid.ui.activity.ArticleFragment;
+import com.wanandroid.ui.fragment.ArticleFragment;
 import com.wanandroid.utils.SnackbarUtils;
 
 import butterknife.BindView;
@@ -182,7 +182,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
 
     @Override
     public void setStatusBar() {
-        StatusBarUtil.setColorForDrawerLayout(this, drawerLayout, ContextCompat.getColor(this, R.color.colorPrimary), 122);
+        StatusBarUtil.setColorForDrawerLayout(this, drawerLayout, ContextCompat.getColor(this, R.color.colorPrimary), 40);
     }
 
     @Override
