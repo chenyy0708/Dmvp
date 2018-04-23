@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    tools:context="com.wanandroid.ui.activity.main.MainActivity"
     tools:openDrawer="start">
 
     <android.support.design.widget.CoordinatorLayout
@@ -40,24 +41,24 @@
             app:layout_behavior="@string/bye_burger_float_behavior" />
 
         <FrameLayout
-            app:layout_behavior="@string/bye_burger_bottom_behavior"
-            android:elevation="@dimen/dp_15"
-            android:background="#88ffffff"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_gravity="bottom">
+            android:layout_gravity="bottom"
+            android:background="#88ffffff"
+            android:elevation="@dimen/dp_15"
+            app:layout_behavior="@string/bye_burger_bottom_behavior">
 
             <com.github.mmin18.widget.RealtimeBlurView
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:realtimeBlurRadius="10dp"
-                app:realtimeOverlayColor="#44ffffff"
-                android:layout_height="match_parent" />
+                app:realtimeOverlayColor="#44ffffff" />
 
             <me.majiajie.pagerbottomtabstrip.PageNavigationView
                 android:id="@+id/pnv_tab"
-                android:background="@color/transparent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/transparent" />
         </FrameLayout>
     </android.support.design.widget.CoordinatorLayout>
 
@@ -66,6 +67,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/shape_toolbar_bg"
-        android:fitsSystemWindows="true" />
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_menu_layout" />
 </android.support.v4.widget.DrawerLayout>

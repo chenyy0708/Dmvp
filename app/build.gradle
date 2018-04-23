@@ -79,5 +79,10 @@ dependencies {
     implementation 'com.ldoublem.thumbUplib:ThumbUplib:0.5'
     // 文字标签
     implementation 'com.haozhang.libary:android-slanted-textview:1.2'
+    // 图片滚动
+    implementation 'com.github.florent37:diagonallayout:1.0.8'
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    // 头像
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
     testCompile 'junit:junit:4.12'
 }

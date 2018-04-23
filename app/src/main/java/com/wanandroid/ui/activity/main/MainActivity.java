@@ -16,12 +16,16 @@ import android.widget.TextView;
 
 import com.chen.common.base.BaseActivity;
 import com.chen.common.di.component.AppComponent;
+import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.jaeger.library.StatusBarUtil;
 import com.wanandroid.chen.R;
+import com.wanandroid.glide.GlideUtil;
 import com.wanandroid.ui.activity.ArticleFragment;
+import com.wanandroid.utils.SnackbarUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.majiajie.pagerbottomtabstrip.MaterialMode;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
@@ -72,6 +76,8 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
             , R.drawable.icon_knowledge_hierarchy_selected
             , R.drawable.icon_navigation_selected
             , R.drawable.icon_project_selected};
+    private KenBurnsView kenBurnsView;
+    private CircleImageView userCiv;
 
     @Override
     public int getLayoutId() {
@@ -112,12 +118,63 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(kenBurnsView != null) {
+            kenBurnsView.resume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(kenBurnsView != null) {
+            kenBurnsView.pause();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(kenBurnsView != null) {
+            kenBurnsView.restart();
+        }
+    }
+
     /**
      * 初始化DrawLayout侧边栏
      */
     private void initDrawLayout() {
+        kenBurnsView = navView.getHeaderView(0).findViewById(R.id.header_kbv);
+        userCiv = navView.getHeaderView(0).findViewById(R.id.header_civ);
+        GlideUtil.loadUrl(this,"http://img3.imgtn.bdimg.com/it/u=1791785373,4260210401&fm=27&gp=0.jpg",userCiv);
         //创建返回键，并实现打开关/闭监听
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, commonToolbar, R.string.open, R.string.close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, commonToolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                //获取抽屉的view
+                View mContent = drawerLayout.getChildAt(0);
+                float scale = 1 - slideOffset;
+                //在滑动时内容界面的宽度为 屏幕宽度减去菜单界面所占宽度
+                mContent.setTranslationX(drawerView.getMeasuredWidth() * (1 - scale));
+                //设置内容界面操作无效（比如有button就会点击无效）
+                mContent.invalidate();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                kenBurnsView.pause(); // 停止滚动
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                kenBurnsView.resume(); // 开始滚动
+            }
+        };
         // 实现箭头和三条杠图案切换和抽屉拉合的同步
         mDrawerToggle.syncState();
         drawerLayout.addDrawerListener(mDrawerToggle);
@@ -216,6 +273,21 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     @Override
     public void onBackPressedSupport() {
         mDelegate.onBackPressedSupport();
+    }
+
+
+    private long clickTime;
+
+    @Override
+    public void onBackPressed() {
+        long currentTime = System.currentTimeMillis();
+        long time = 2000;
+        if ((currentTime - clickTime) > time) {
+            SnackbarUtils.showSnackMessage(this, "再按一次后退键退出CWanAndroid");
+            clickTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
     }
 
     /**

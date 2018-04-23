@@ -16,6 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:textSize="@dimen/sp_16"
+        android:textSize="@dimen/text_18"
         tools:text="开发环境" />
 </android.support.v7.widget.Toolbar>
