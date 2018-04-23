@@ -110,12 +110,12 @@
 
         <com.haozhang.lib.SlantedTextView
             android:id="@+id/item_article_stv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="right|bottom"
             android:gravity="center"
             app:slantedBackgroundColor="@color/colorPrimary"
-            app:slantedLength="20dp"
+            app:slantedLength="25dp"
             app:slantedMode="right_bottom"
             app:slantedTextColor="@color/white"
             app:slantedTextSize="@dimen/text_10" />

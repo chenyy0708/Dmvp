@@ -39,7 +39,7 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleDatas, BaseViewHolde
         helper.setGone(R.id.item_article_content, TextUtils.isEmpty(article.getDesc()) ? false : true);
         // 标签
         SlantedTextView slantedTextView = helper.getView(R.id.item_article_stv);
-        slantedTextView.setText(article.getSuperchaptername());
+        slantedTextView.setText(TextUtils.equals(article.getSuperchaptername(),"开源项目主Tab") ? "开源项目" : article.getSuperchaptername());
         // 收藏控件
         ThumbUpView thumbUpView = helper.getView(R.id.item_article_collect);
         if (article.getCollect()) {
