@@ -33,13 +33,16 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleDatas, BaseViewHolde
         helper.setText(R.id.item_article_time, article.getNicedate());
         // 标题
         helper.setText(R.id.item_article_title, Html.fromHtml(article.getTitle()));
-        helper.setGone(R.id.item_article_title, TextUtils.isEmpty(article.getTitle()) ? false : true);
+        helper.setGone(R.id.item_article_title, !TextUtils.isEmpty(article.getTitle()));
         // 内容
         helper.setText(R.id.item_article_content, Html.fromHtml(article.getDesc()));
-        helper.setGone(R.id.item_article_content, TextUtils.isEmpty(article.getDesc()) ? false : true);
+        helper.setGone(R.id.item_article_content, !TextUtils.isEmpty(article.getDesc()));
         // 标签
         SlantedTextView slantedTextView = helper.getView(R.id.item_article_stv);
-        slantedTextView.setText(TextUtils.equals(article.getSuperchaptername(),"开源项目主Tab") ? "开源项目" : article.getSuperchaptername());
+        slantedTextView.setText(TextUtils.equals(article.getSuperchaptername(), "开源项目主Tab") ? "开源项目" : article.getSuperchaptername());
+        // tag
+        helper.setGone(R.id.item_article_new, article.getFresh());
+        helper.setGone(R.id.item_article_project, !TextUtils.isEmpty(article.getProjectlink()));
         // 收藏控件
         ThumbUpView thumbUpView = helper.getView(R.id.item_article_collect);
         if (article.getCollect()) {
