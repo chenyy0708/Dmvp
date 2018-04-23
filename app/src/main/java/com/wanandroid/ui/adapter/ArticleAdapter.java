@@ -23,17 +23,17 @@ public class ArticleAdapter extends BaseQuickAdapter<ArticleDatas, BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, ArticleDatas article) {
-        if (!TextUtils.isEmpty(article.getTitle())) {
-            helper.setText(R.id.item_search_pager_title, Html.fromHtml(article.getTitle()));
-        }
-        if (!TextUtils.isEmpty(article.getAuthor())) {
-            helper.setText(R.id.item_search_pager_author, article.getAuthor());
-        }
-        if (!TextUtils.isEmpty(article.getChaptername())) {
-            String classifyName = article.getSuperchaptername() + " / " + article.getChaptername();
-        }
-        if (!TextUtils.isEmpty(article.getNicedate())) {
-            helper.setText(R.id.item_search_pager_niceDate, article.getNicedate());
-        }
+        // 作者
+        helper.setText(R.id.item_article_author, article.getAuthor());
+        // 项目类型
+        helper.setText(R.id.item_article_project_type, article.getSuperchaptername() + " / " + article.getChaptername());
+        // 时间
+        helper.setText(R.id.item_article_time, article.getNicedate());
+        // 标题
+        helper.setText(R.id.item_article_title, Html.fromHtml(article.getTitle()));
+        helper.setGone(R.id.item_article_title, TextUtils.isEmpty(article.getTitle()) ? false : true);
+        // 内容
+        helper.setText(R.id.item_article_content, Html.fromHtml(article.getDesc()));
+        helper.setGone(R.id.item_article_content, TextUtils.isEmpty(article.getDesc()) ? false : true);
     }
 }

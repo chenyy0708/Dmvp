@@ -9,23 +9,23 @@ import java.util.List;
  * @desc :
  */
 public class ArticleDatas implements Serializable {
-    private String apklink;
+    private String apkLink;
     private String author;
-    private int chapterid;
-    private String chaptername;
+    private int chapterId;
+    private String chapterName;
     private boolean collect;
-    private int courseid;
+    private int courseId;
     private String desc;
-    private String envelopepic;
+    private String envelopePic;
     private boolean fresh;
     private int id;
     private String link;
-    private String nicedate;
+    private String niceDate;
     private String origin;
-    private String projectlink;
-    private int publishtime;
-    private int superchapterid;
-    private String superchaptername;
+    private String projectLink;
+    private String publishTime;
+    private int superChapterId;
+    private String superChapterName;
     private List<ArticleTags> tags;
     private String title;
     private int type;
@@ -34,10 +34,10 @@ public class ArticleDatas implements Serializable {
 
 
     public void setApklink(String apklink) {
-        this.apklink = apklink;
+        this.apkLink = apklink;
     }
     public String getApklink() {
-        return apklink;
+        return apkLink;
     }
 
 
@@ -50,18 +50,18 @@ public class ArticleDatas implements Serializable {
 
 
     public void setChapterid(int chapterid) {
-        this.chapterid = chapterid;
+        this.chapterId = chapterid;
     }
     public int getChapterid() {
-        return chapterid;
+        return chapterId;
     }
 
 
     public void setChaptername(String chaptername) {
-        this.chaptername = chaptername;
+        this.chapterName = chaptername;
     }
     public String getChaptername() {
-        return chaptername;
+        return chapterName;
     }
 
 
@@ -74,10 +74,10 @@ public class ArticleDatas implements Serializable {
 
 
     public void setCourseid(int courseid) {
-        this.courseid = courseid;
+        this.courseId = courseid;
     }
     public int getCourseid() {
-        return courseid;
+        return courseId;
     }
 
 
@@ -90,10 +90,10 @@ public class ArticleDatas implements Serializable {
 
 
     public void setEnvelopepic(String envelopepic) {
-        this.envelopepic = envelopepic;
+        this.envelopePic = envelopepic;
     }
     public String getEnvelopepic() {
-        return envelopepic;
+        return envelopePic;
     }
 
 
@@ -122,10 +122,10 @@ public class ArticleDatas implements Serializable {
 
 
     public void setNicedate(String nicedate) {
-        this.nicedate = nicedate;
+        this.niceDate = nicedate;
     }
     public String getNicedate() {
-        return nicedate;
+        return niceDate;
     }
 
 
@@ -138,34 +138,34 @@ public class ArticleDatas implements Serializable {
 
 
     public void setProjectlink(String projectlink) {
-        this.projectlink = projectlink;
+        this.projectLink = projectlink;
     }
     public String getProjectlink() {
-        return projectlink;
+        return projectLink;
     }
 
 
-    public void setPublishtime(int publishtime) {
-        this.publishtime = publishtime;
+    public void setPublishtime(String publishtime) {
+        this.publishTime = publishtime;
     }
-    public int getPublishtime() {
-        return publishtime;
+    public String getPublishtime() {
+        return publishTime;
     }
 
 
     public void setSuperchapterid(int superchapterid) {
-        this.superchapterid = superchapterid;
+        this.superChapterId = superchapterid;
     }
     public int getSuperchapterid() {
-        return superchapterid;
+        return superChapterId;
     }
 
 
     public void setSuperchaptername(String superchaptername) {
-        this.superchaptername = superchaptername;
+        this.superChapterName = superchaptername;
     }
     public String getSuperchaptername() {
-        return superchaptername;
+        return superChapterName;
     }
 
 
