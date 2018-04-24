@@ -23,6 +23,7 @@ import com.wanandroid.chen.R;
 import com.wanandroid.glide.GlideUtil;
 import com.wanandroid.ui.fragment.ArticleFragment;
 import com.wanandroid.ui.fragment.main.CollectFragment;
+import com.wanandroid.ui.fragment.main.NavigationFragment;
 import com.wanandroid.utils.SnackbarUtils;
 
 import butterknife.BindView;
@@ -208,7 +209,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity, Navi
         if (savedInstanceState == null) {
             mFragments[FIRST] = ArticleFragment.newInstance();
             mFragments[SECOND] = ArticleFragment.newInstance();
-            mFragments[THIRD] = ArticleFragment.newInstance();
+            mFragments[THIRD] = NavigationFragment.newInstance();
             mFragments[FOUR] = ArticleFragment.newInstance();
             // 侧边菜单fragment
             mFragments[FIVE] = CollectFragment.newInstance("收藏");
@@ -219,7 +220,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity, Navi
             // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
             mFragments[FIRST] = findFragment(ArticleFragment.class);
             mFragments[SECOND] = findFragment(ArticleFragment.class);
-            mFragments[THIRD] = findFragment(ArticleFragment.class);
+            mFragments[THIRD] = findFragment(NavigationFragment.class);
             mFragments[FOUR] = findFragment(ArticleFragment.class);
             // 侧边菜单fragment
             mFragments[FIVE] = findFragment(ArticleFragment.class);

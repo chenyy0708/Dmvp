@@ -4,6 +4,7 @@ package com.wanandroid.api;
 import com.wanandroid.bean.BannerData;
 import com.wanandroid.bean.BaseEntry;
 import com.wanandroid.bean.HomeArticleBean;
+import com.wanandroid.bean.NavigationBean;
 
 import java.util.List;
 
@@ -34,5 +35,13 @@ public interface WanAndroid {
      */
     @GET("banner/json")
     Observable<BaseEntry<List<BannerData>>> getHomeBanner();
+
+    /**
+     * 导航列表
+     *
+     * @return Navigation List
+     */
+    @GET("navi/json")
+    Observable<BaseEntry<List<NavigationBean>>> getNavigationData();
 
 }
