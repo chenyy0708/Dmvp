@@ -3,6 +3,7 @@ package com.wanandroid.ui.fragment.main;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 
 import com.chen.common.base.BaseFragment;
@@ -13,9 +14,11 @@ import com.wanandroid.di.component.DaggerNavigationComponent;
 import com.wanandroid.di.module.NavigationModule;
 import com.wanandroid.mvp.contract.NavigationContract;
 import com.wanandroid.mvp.presenter.NavigationPresenter;
+import com.wanandroid.ui.adapter.NavigationAdapter;
 import com.wanandroid.ui.adapter.NavigationTabAdapter;
 import com.wanandroid.utils.SnackbarUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,6 +40,19 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter> implem
     RecyclerView recyclerView;
     @Inject
     LinearLayoutManager linearLayoutManager;
+    private NavigationAdapter navigationAdapter;
+    private LinearSmoothScroller smoothScroller;
+
+    /**
+     * 是否点击了tab
+     */
+    private boolean isSelectTab = false;
+
+    /**
+     * 是否手动滚动RecycleView
+     */
+    private boolean isScrollRv = false;
+
 
     public static NavigationFragment newInstance() {
         Bundle args = new Bundle();
@@ -52,16 +68,11 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter> implem
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        recyclerView.setLayoutManager(linearLayoutManager);
+        navigationAdapter = new NavigationAdapter(R.layout.item_navigation_rv, new ArrayList<>());
+        recyclerView.setAdapter(navigationAdapter);
         mPresenter.getNavigationData();
-        vtbTabLayout.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabView tabView, int i) {
-            }
-
-            @Override
-            public void onTabReselected(TabView tabView, int i) {
-            }
-        });
+        initTabRvListener();
     }
 
     @Override
@@ -82,10 +93,59 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter> implem
     public void setNavigationData(List<NavigationBean> data) {
         vtbTabLayout.setTabAdapter(new NavigationTabAdapter(data));
         vtbTabLayout.setTabSelected(0);
+        navigationAdapter.replaceData(data);
     }
 
     @Override
     public void showErrorTip(String msg) {
         SnackbarUtils.showSnackMessage(_mActivity, msg);
     }
+
+    /**
+     * tabLayout，Rv监听
+     */
+    private void initTabRvListener() {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                // RecycleView正常滚动,非点tab滚动
+                if (!isSelectTab) {
+                    isScrollRv = true;
+                    //获取第一个可见view的位置
+                    int firstItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+                    vtbTabLayout.setTabSelected(firstItemPosition);
+                    //
+                } else {
+                    // RecyclerView被点击tab滚动到指定位置,不需要任何操作
+                    isSelectTab = false;
+                }
+            }
+        });
+        // 用于RecycleView平滑滑动到指定位置
+        smoothScroller = new LinearSmoothScroller(_mActivity) {
+            @Override
+            protected int getVerticalSnapPreference() {
+                return LinearSmoothScroller.SNAP_TO_START;
+            }
+        };
+        vtbTabLayout.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabView tabView, int i) {
+                // 手动滚动RecycleView
+                if (isScrollRv) {
+                    isScrollRv = false;
+                } else {
+                    // 点击tab滚动RecycleView
+                    isSelectTab = true;
+                    smoothScroller.setTargetPosition(i);
+                    linearLayoutManager.startSmoothScroll(smoothScroller);
+                }
+            }
+
+            @Override
+            public void onTabReselected(TabView tabView, int i) {
+            }
+        });
+    }
+
 }
