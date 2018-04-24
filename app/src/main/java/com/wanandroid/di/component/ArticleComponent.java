@@ -24,14 +24,9 @@ import com.wanandroid.ui.fragment.ArticleFragment;
 import dagger.Component;
 
 /**
- * ================================================
- * 展示 Component 的用法
- *
- * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki#2.4.6">Component wiki 官方文档</a>
- * Created by JessYan on 09/04/2016 11:17
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * ================================================
+ * @author :ChenYangYi
+ * @date  :2018/4/18
+ * @description : 首页文章Fragment Component
  */
 @ActivityScope
 @Component(modules = ArticleModule.class, dependencies = AppComponent.class)

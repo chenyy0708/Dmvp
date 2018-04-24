@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.chen.common.di.ActivityScope;
 import com.wanandroid.chen.R;
 import com.wanandroid.mvp.contract.ArticleContract;
-import com.wanandroid.mvp.contract.ArticleModel;
+import com.wanandroid.mvp.model.ArticleModel;
 import com.wanandroid.ui.adapter.ArticleAdapter;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import dagger.Provides;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/2
- * @desc :
+ * @date  :2018/4/2
+ * @description  : 首页文章 Fragment Module
  */
 
 @Module

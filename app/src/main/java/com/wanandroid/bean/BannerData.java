@@ -2,8 +2,8 @@ package com.wanandroid.bean;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/20
- * @desc : 单个轮播Bean
+ * @date  :2018/4/20
+ * @description  : 单个轮播Bean
  */
 public class BannerData {
     private String desc;

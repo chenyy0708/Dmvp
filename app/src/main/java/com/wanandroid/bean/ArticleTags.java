@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/18
- * @desc :
+ * @date  :2018/4/18
+ * @description :
  */
 public class ArticleTags implements Serializable {
     private String name;

@@ -1,11 +1,11 @@
 package com.wanandroid.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -19,7 +19,7 @@ import com.wanandroid.di.component.DaggerArticleComponent;
 import com.wanandroid.di.module.ArticleModule;
 import com.wanandroid.glide.GlideUtil;
 import com.wanandroid.mvp.contract.ArticleContract;
-import com.wanandroid.mvp.contract.ArticlePresenter;
+import com.wanandroid.mvp.presenter.ArticlePresenter;
 import com.wanandroid.ui.activity.webview.CommonWebViewActivity;
 import com.wanandroid.ui.adapter.ArticleAdapter;
 import com.wanandroid.utils.SnackbarUtils;
@@ -34,11 +34,11 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/2
- * @desc : 首页
+ * @date :2018/4/2
+ * @description : 首页
  */
 
-public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView,BannerData>, BGABanner.Adapter<ImageView,BannerData> {
+public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView, BannerData>, BGABanner.Adapter<ImageView, BannerData> {
     @Inject
     ArticleAdapter mAdapter;
     @Inject
@@ -74,7 +74,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
      */
     private void initRVAndHeader() {
         //add head banner
-        LinearLayout mHeaderGroup = ((LinearLayout) LayoutInflater.from(_mActivity).inflate(R.layout.header_home_banner, null));
+        @SuppressLint("InflateParams") LinearLayout mHeaderGroup = ((LinearLayout) LayoutInflater.from(_mActivity).inflate(R.layout.header_home_banner, null));
         mBanner = mHeaderGroup.findViewById(R.id.banner);
         mHeaderGroup.removeView(mBanner);
         mBanner.setAdapter(this);
@@ -97,7 +97,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
 
     @Override
     public void showErrorTip(String msg) {
-        SnackbarUtils.showSnackMessage(getActivity(), msg);
+        SnackbarUtils.showSnackMessage(_mActivity, msg);
     }
 
 
@@ -142,7 +142,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
     @Override
     public void onBannerItemClick(BGABanner banner, ImageView itemView, @Nullable BannerData model, int position) {
         assert model != null;
-        CommonWebViewActivity.startAction(_mActivity, model.getUrl(),model.getTitle());
+        CommonWebViewActivity.startAction(_mActivity, model.getUrl(), model.getTitle());
     }
 
     @Override

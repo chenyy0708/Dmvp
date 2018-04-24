@@ -40,8 +40,8 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/19
- * @desc : 主页面
+ * @date  :2018/4/19
+ * @description  : 主页面
  */
 public class MainActivity extends BaseActivity implements ISupportActivity {
     @BindView(R.id.common_toolbar_title_tv)
@@ -59,7 +59,6 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     NavigationController mNavigationController;
     @BindView(R.id.main_floating_action_btn)
     FloatingActionButton mainFloatingActionBtn;
-    private ActionBarDrawerToggle mDrawerToggle;
 
     /**
      * 不需要继承SupportActivity，用于处理Fragment内存回收各种情况
@@ -77,7 +76,6 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
             , R.drawable.icon_navigation_selected
             , R.drawable.icon_project_selected};
     private KenBurnsView kenBurnsView;
-    private CircleImageView userCiv;
 
     @Override
     public int getLayoutId() {
@@ -121,7 +119,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(kenBurnsView != null) {
+        if (kenBurnsView != null) {
             kenBurnsView.resume();
         }
     }
@@ -129,7 +127,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(kenBurnsView != null) {
+        if (kenBurnsView != null) {
             kenBurnsView.pause();
         }
     }
@@ -137,7 +135,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(kenBurnsView != null) {
+        if (kenBurnsView != null) {
             kenBurnsView.restart();
         }
     }
@@ -147,10 +145,10 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
      */
     private void initDrawLayout() {
         kenBurnsView = navView.getHeaderView(0).findViewById(R.id.header_kbv);
-        userCiv = navView.getHeaderView(0).findViewById(R.id.header_civ);
-        GlideUtil.loadUrl(this,"http://img3.imgtn.bdimg.com/it/u=1791785373,4260210401&fm=27&gp=0.jpg",userCiv);
+        CircleImageView userCiv = navView.getHeaderView(0).findViewById(R.id.header_civ);
+        GlideUtil.loadUrl(this, "http://img3.imgtn.bdimg.com/it/u=1791785373,4260210401&fm=27&gp=0.jpg", userCiv);
         //创建返回键，并实现打开关/闭监听
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, commonToolbar, R.string.open, R.string.close) {
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, commonToolbar, R.string.open, R.string.close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
@@ -291,7 +289,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     }
 
     /**
-     * 加载多个同级根Fragment,类似Wechat, QQ主页的场景
+     * 加载多个同级根Fragment,类似WeChat, QQ主页的场景
      */
     public void loadMultipleRootFragment(int containerId, int showPosition, ISupportFragment... toFragments) {
         mDelegate.loadMultipleRootFragment(containerId, showPosition, toFragments);

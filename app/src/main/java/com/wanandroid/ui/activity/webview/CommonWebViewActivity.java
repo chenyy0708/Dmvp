@@ -85,7 +85,7 @@ public class CommonWebViewActivity extends BaseActivity {
                 // 进度条颜色
                 .useDefaultIndicator(ContextCompat.getColor(mContext, R.color.blue_dark_btn))
                 .setWebViewClient(mWebViewClient)
-                .setAgentWebWebSettings(new wanAndroidWebSettings())
+                .setAgentWebWebSettings(new WanAndroidWebSettings())
                 .createAgentWeb()
                 .ready()
                 .go(getIntent().getStringExtra(URL));

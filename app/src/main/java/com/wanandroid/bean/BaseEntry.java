@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/18
- * @desc :WanAndroid Api 基类
+ * @date  :2018/4/18
+ * @description  :WanAndroid Api 基类
  */
 public class BaseEntry<T> implements Serializable {
     private int errorCode;

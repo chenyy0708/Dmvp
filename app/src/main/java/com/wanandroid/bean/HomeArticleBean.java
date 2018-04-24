@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/18
- * @desc :
+ * @date  :2018/4/18
+ * @description  :
  */
 public class HomeArticleBean  implements Serializable{
     private int curpage;

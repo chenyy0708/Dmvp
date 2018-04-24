@@ -1,10 +1,11 @@
-package com.wanandroid.mvp.contract;
+package com.wanandroid.mvp.model;
 
 import com.chen.common.di.ActivityScope;
 import com.chen.common.rx.IRetrofitManager;
 import com.wanandroid.api.WanAndroid;
 import com.wanandroid.bean.BannerData;
 import com.wanandroid.bean.HomeArticleBean;
+import com.wanandroid.mvp.contract.ArticleContract;
 import com.wanandroid.rx.RxHelper;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import io.reactivex.Observable;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/2
- * @desc :
+ * @date  :2018/4/2
+ * @description  :
  */
 @ActivityScope
 public class ArticleModel implements ArticleContract.Model {

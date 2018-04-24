@@ -16,8 +16,8 @@ import io.reactivex.Observable;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/2
- * @desc :
+ * @date  :2018/4/2
+ * @description  :
  */
 
 public interface ArticleContract {

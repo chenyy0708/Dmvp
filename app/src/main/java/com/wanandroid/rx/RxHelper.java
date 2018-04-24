@@ -16,8 +16,8 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/17
- * @desc : Rxjava2工具类，用于线程切换等
+ * @date  :2018/4/17
+ * @description  : RxJava2工具类，用于线程切换等
  */
 public class RxHelper {
 

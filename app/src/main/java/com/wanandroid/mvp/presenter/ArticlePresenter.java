@@ -1,4 +1,4 @@
-package com.wanandroid.mvp.contract;
+package com.wanandroid.mvp.presenter;
 
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -9,6 +9,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.wanandroid.bean.BannerData;
 import com.wanandroid.bean.HomeArticleBean;
+import com.wanandroid.mvp.contract.ArticleContract;
 import com.wanandroid.ui.activity.webview.CommonWebViewActivity;
 import com.wanandroid.ui.adapter.ArticleAdapter;
 
@@ -18,8 +19,8 @@ import javax.inject.Inject;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/2
- * @desc :
+ * @date  :2018/4/2
+ * @description  :
  */
 
 public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {

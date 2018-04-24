@@ -1,8 +1,6 @@
 package com.wanandroid.app;
 
-import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 
 import com.chen.common.app.BaseApplication;
 import com.chen.common.app.IApp;
@@ -10,16 +8,13 @@ import com.chen.common.di.component.AppComponent;
 import com.chen.common.di.component.DaggerAppComponent;
 import com.chen.common.di.module.AppModule;
 import com.chen.common.di.module.NetModule;
-import com.wanandroid.chen.R;
-import com.scwang.smartrefresh.header.MaterialHeader;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.squareup.leakcanary.LeakCanary;
+import com.wanandroid.chen.R;
 
 /**
  * @author :ChenYangYi
- * @time :2018/4/3
- * @desc : APP入口Application
+ * @date  :2018/4/3
+ * @description  : APP入口Application
  */
 
 public class App extends BaseApplication implements IApp {
