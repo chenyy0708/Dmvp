@@ -4,4 +4,9 @@
     <string name="open">打开</string>
     <string name="close">关闭</string>
     <string name="share_view">shareView</string>
+    <string name="home">首页</string>
+    <string name="collect">收藏</string>
+    <string name="settings">设置</string>
+    <string name="about_me">关于我们</string>
+    <string name="logout">退出登录</string>
 </resources>

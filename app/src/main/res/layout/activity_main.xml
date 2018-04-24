@@ -41,6 +41,7 @@
             app:layout_behavior="@string/bye_burger_float_behavior" />
 
         <FrameLayout
+            android:id="@+id/fl_bottom_tab"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_gravity="bottom"
@@ -68,5 +69,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/header_menu_layout" />
+        app:headerLayout="@layout/header_menu_layout"
+        app:menu="@menu/menu_main_nav" />
 </android.support.v4.widget.DrawerLayout>

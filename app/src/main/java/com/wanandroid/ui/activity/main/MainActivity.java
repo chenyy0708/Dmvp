@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.wanandroid.chen.R;
 import com.wanandroid.glide.GlideUtil;
 import com.wanandroid.ui.fragment.ArticleFragment;
+import com.wanandroid.ui.fragment.main.CollectFragment;
 import com.wanandroid.utils.SnackbarUtils;
 
 import butterknife.BindView;
@@ -40,10 +42,10 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * @author :ChenYangYi
- * @date  :2018/4/19
- * @description  : 主页面
+ * @date :2018/4/19
+ * @description : 主页面
  */
-public class MainActivity extends BaseActivity implements ISupportActivity {
+public class MainActivity extends BaseActivity implements ISupportActivity, NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.common_toolbar_title_tv)
     TextView commonToolbarTitleTv;
     @BindView(R.id.common_toolbar)
@@ -59,18 +61,20 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
     NavigationController mNavigationController;
     @BindView(R.id.main_floating_action_btn)
     FloatingActionButton mainFloatingActionBtn;
-
+    @BindView(R.id.fl_bottom_tab)
+    FrameLayout flBottomTab;
     /**
      * 不需要继承SupportActivity，用于处理Fragment内存回收各种情况
      */
     final SupportActivityDelegate mDelegate = new SupportActivityDelegate(this);
-
-    private SupportFragment[] mFragments = new SupportFragment[4];
+    private SupportFragment[] mFragments = new SupportFragment[6];
     public static final int FIRST = 0;
     public static final int SECOND = 1;
     public static final int THIRD = 2;
     public static final int FOUR = 3;
-    private String[] mTitles = {"首页", "知识体系", "导航", "项目"};
+    public static final int FIVE = 4;
+    public static final int SIX = 5;
+    private String[] mTitles = {"首页", "知识体系", "导航", "项目", "收藏", "设置"};
     private Integer[] mIcons = {R.drawable.icon_home_pager_selected
             , R.drawable.icon_knowledge_hierarchy_selected
             , R.drawable.icon_navigation_selected
@@ -145,6 +149,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
      */
     private void initDrawLayout() {
         kenBurnsView = navView.getHeaderView(0).findViewById(R.id.header_kbv);
+        navView.setNavigationItemSelectedListener(this);
         CircleImageView userCiv = navView.getHeaderView(0).findViewById(R.id.header_civ);
         GlideUtil.loadUrl(this, "http://img3.imgtn.bdimg.com/it/u=1791785373,4260210401&fm=27&gp=0.jpg", userCiv);
         //创建返回键，并实现打开关/闭监听
@@ -205,14 +210,20 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
             mFragments[SECOND] = ArticleFragment.newInstance();
             mFragments[THIRD] = ArticleFragment.newInstance();
             mFragments[FOUR] = ArticleFragment.newInstance();
+            // 侧边菜单fragment
+            mFragments[FIVE] = CollectFragment.newInstance("收藏");
+            mFragments[SIX] = CollectFragment.newInstance("设置");
             loadMultipleRootFragment(R.id.fragment_container, FIRST, mFragments[FIRST],
-                    mFragments[SECOND], mFragments[THIRD], mFragments[FOUR]);
+                    mFragments[SECOND], mFragments[THIRD], mFragments[FOUR], mFragments[FIVE], mFragments[SIX]);
         } else {
             // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
             mFragments[FIRST] = findFragment(ArticleFragment.class);
             mFragments[SECOND] = findFragment(ArticleFragment.class);
             mFragments[THIRD] = findFragment(ArticleFragment.class);
             mFragments[FOUR] = findFragment(ArticleFragment.class);
+            // 侧边菜单fragment
+            mFragments[FIVE] = findFragment(ArticleFragment.class);
+            mFragments[SIX] = findFragment(ArticleFragment.class);
         }
     }
 
@@ -324,6 +335,52 @@ public class MainActivity extends BaseActivity implements ISupportActivity {
             default:
 
                 break;
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_item_wan_android:
+                changeFragmentAndTabFAB(FIRST);
+                drawerLayout.closeDrawers();
+                break;
+            case R.id.nav_item_my_collect:
+                changeFragmentAndTabFAB(FIVE);
+                drawerLayout.closeDrawers();
+                break;
+            case R.id.nav_item_setting:
+                changeFragmentAndTabFAB(SIX);
+                drawerLayout.closeDrawers();
+                break;
+            case R.id.nav_item_about_us:
+                SnackbarUtils.showSnackMessage(this, "关于我们");
+                return false;
+            case R.id.nav_item_logout:
+                SnackbarUtils.showSnackMessage(this, "退出登录");
+                return false;
+            default:
+                changeFragmentAndTabFAB(FIRST);
+                drawerLayout.closeDrawers();
+                break;
+        }
+        return true;
+    }
+
+    /**
+     * 改变显示的Fragment和顶部导航栏
+     */
+    private void changeFragmentAndTabFAB(int position) {
+        showHideFragment(mFragments[position]);
+        commonToolbarTitleTv.setText(mTitles[position]);
+        // 只有第一个Fragment 首页 才设置tab的位置
+        if (position == 0) {
+            mNavigationController.setSelect(position);
+            flBottomTab.setVisibility(View.VISIBLE);
+            mainFloatingActionBtn.setVisibility(View.VISIBLE);
+        } else {
+            flBottomTab.setVisibility(View.GONE);
+            mainFloatingActionBtn.setVisibility(View.GONE);
         }
     }
 }
