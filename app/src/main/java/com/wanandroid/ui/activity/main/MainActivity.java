@@ -22,6 +22,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.wanandroid.chen.R;
 import com.wanandroid.glide.GlideUtil;
 import com.wanandroid.ui.fragment.ArticleFragment;
+import com.wanandroid.ui.fragment.IFragment;
 import com.wanandroid.ui.fragment.main.CollectFragment;
 import com.wanandroid.ui.fragment.main.NavigationFragment;
 import com.wanandroid.utils.SnackbarUtils;
@@ -330,8 +331,9 @@ public class MainActivity extends BaseActivity implements ISupportActivity, Navi
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.main_floating_action_btn:
-                ArticleFragment articleFragments = (ArticleFragment) mFragments[mNavigationController.getSelected()];
-                articleFragments.jumpToRVTop();
+                // 通过接口，统一调用
+                IFragment mFragment = (IFragment) mFragments[mNavigationController.getSelected()];
+                mFragment.jumpToRVTop();
                 break;
             default:
 

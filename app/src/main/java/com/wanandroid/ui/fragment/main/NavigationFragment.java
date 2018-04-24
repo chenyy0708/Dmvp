@@ -16,6 +16,7 @@ import com.wanandroid.mvp.contract.NavigationContract;
 import com.wanandroid.mvp.presenter.NavigationPresenter;
 import com.wanandroid.ui.adapter.NavigationAdapter;
 import com.wanandroid.ui.adapter.NavigationTabAdapter;
+import com.wanandroid.ui.fragment.IFragment;
 import com.wanandroid.utils.SnackbarUtils;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ import q.rorbin.verticaltablayout.widget.TabView;
  * @description : 导航Fragment
  * @github :https://github.com/chenyy0708
  */
-public class NavigationFragment extends BaseFragment<NavigationPresenter> implements NavigationContract.View {
+public class NavigationFragment extends BaseFragment<NavigationPresenter> implements NavigationContract.View, IFragment {
     @BindView(R.id.vtb_tab_layout)
     VerticalTabLayout vtbTabLayout;
     @BindView(R.id.recyclerView)
@@ -148,4 +149,12 @@ public class NavigationFragment extends BaseFragment<NavigationPresenter> implem
         });
     }
 
+    @Override
+    public void jumpToRVTop() {
+        // 点击tab滚动RecycleView
+        isSelectTab = true;
+        smoothScroller.setTargetPosition(0);
+        linearLayoutManager.startSmoothScroll(smoothScroller);
+        vtbTabLayout.setTabSelected(0);
+    }
 }

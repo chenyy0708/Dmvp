@@ -16,6 +16,12 @@
         app:tab_margin="@dimen/dp_15"
         app:tab_mode="scrollable" />
 
+
+    <View
+        android:layout_width="1dp"
+        android:background="@color/colorBackground"
+        android:layout_height="match_parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"

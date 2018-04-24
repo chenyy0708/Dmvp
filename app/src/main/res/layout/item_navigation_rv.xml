@@ -10,15 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/dp_10"
-        android:paddingStart="@dimen/dp_10"
         android:paddingEnd="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_10"
         android:paddingTop="@dimen/dp_15"
         android:textColor="@color/colorSubtitle"
         android:textSize="@dimen/text_18"
         tools:text="常用网站" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimary" />
+        tools:listitem = "@layout/item_navigation_article"
+        android:layout_height="wrap_content" />
 </LinearLayout>

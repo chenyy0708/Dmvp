@@ -38,7 +38,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * @description : 首页
  */
 
-public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView, BannerData>, BGABanner.Adapter<ImageView, BannerData> {
+public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView, BannerData>, BGABanner.Adapter<ImageView, BannerData>,IFragment {
     @Inject
     ArticleAdapter mAdapter;
     @Inject
@@ -154,6 +154,7 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
     /**
      * 滚动RV顶部
      */
+    @Override
     public void jumpToRVTop() {
         recyclerView.smoothScrollToPosition(0);
     }
