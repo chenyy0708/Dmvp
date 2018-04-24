@@ -140,7 +140,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                CommonWebViewActivity.startAction(mContext, mAdapter.getData().get(position).getLink());
+                CommonWebViewActivity.startAction(mContext, mAdapter.getData().get(position).getLink(), mAdapter.getData().get(position).getTitle());
             }
         });
     }

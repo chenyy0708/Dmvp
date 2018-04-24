@@ -20,6 +20,7 @@ import com.wanandroid.di.module.ArticleModule;
 import com.wanandroid.glide.GlideUtil;
 import com.wanandroid.mvp.contract.ArticleContract;
 import com.wanandroid.mvp.contract.ArticlePresenter;
+import com.wanandroid.ui.activity.webview.CommonWebViewActivity;
 import com.wanandroid.ui.adapter.ArticleAdapter;
 import com.wanandroid.utils.SnackbarUtils;
 
@@ -37,7 +38,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * @desc : 首页
  */
 
-public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate, BGABanner.Adapter<ImageView,BannerData> {
+public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView,BannerData>, BGABanner.Adapter<ImageView,BannerData> {
     @Inject
     ArticleAdapter mAdapter;
     @Inject
@@ -139,12 +140,14 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
     }
 
     @Override
-    public void onBannerItemClick(BGABanner banner, View itemView, @Nullable Object model, int position) {
-
+    public void onBannerItemClick(BGABanner banner, ImageView itemView, @Nullable BannerData model, int position) {
+        assert model != null;
+        CommonWebViewActivity.startAction(_mActivity, model.getUrl(),model.getTitle());
     }
 
     @Override
     public void fillBannerItem(BGABanner banner, ImageView itemView, @Nullable BannerData model, int position) {
+        assert model != null;
         GlideUtil.loadUrl(_mActivity, model.getImagepath(), itemView);
     }
 
