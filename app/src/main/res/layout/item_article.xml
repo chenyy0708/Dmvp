@@ -46,42 +46,43 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
-                tools:text="hongyang" />
+                tools:text="HongYang" />
 
             <TextView
-                android:background="@drawable/shape_tag_yellow"
                 android:id="@+id/item_article_project_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="网络编程 / 网络架构"
+                android:background="@drawable/shape_tag_yellow"
+                android:gravity="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_14"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_collect"
                 app:layout_constraintStart_toEndOf="@+id/item_article_collect"
-                app:layout_constraintTop_toTopOf="@+id/item_article_collect" />
+                app:layout_constraintTop_toTopOf="@+id/item_article_collect"
+                tools:text="网络编程 / 网络架构" />
 
             <TextView
                 android:id="@+id/item_article_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8小时前"
                 android:textColor="@color/colorContent"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_project"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/item_article_project" />
+                app:layout_constraintTop_toTopOf="@+id/item_article_project"
+                tools:text="8小时前" />
 
             <TextView
                 android:id="@+id/item_article_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="android WebView详解，常见漏洞详解和安全源码"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/text_16"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
+                tools:text="android WebView详解，常见漏洞详解和安全源码"
                 tools:visibility="visible" />
 
             <TextView
@@ -89,12 +90,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="注册登录、用户信息、用户密码、用户图像修改、书籍分类、本地书籍扫描、书架、书籍搜索（作者名或书籍名）、书籍阅读（仅txt格式，暂不支持PDF等其他格式）、阅读字体、背景颜色、翻页效果等设置、意见反馈（反馈信息发送到我的邮箱）、应用版本更新"
                 android:textColor="@color/colorSubtitle"
                 android:textSize="@dimen/text_14"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_article_title"
+                tools:text="注册登录、用户信息、用户密码、用户图像修改、书籍分类、本地书籍扫描、书架、书籍搜索（作者名或书籍名）、书籍阅读（仅txt格式，暂不支持PDF等其他格式）、阅读字体、背景颜色、翻页效果等设置、意见反馈（反馈信息发送到我的邮箱）、应用版本更新"
                 tools:visibility="visible" />
 
 
@@ -114,13 +115,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_tag_green_background"
-                android:text="新"
+                android:gravity="center"
                 android:textColor="@color/light_green"
                 android:textSize="@dimen/text_14"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
                 app:layout_constraintStart_toEndOf="@+id/item_article_author"
                 app:layout_constraintTop_toTopOf="@+id/item_article_author"
+                android:text="新"
                 tools:visibility="visible" />
 
             <TextView
@@ -129,13 +131,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_tag_red_background_press"
-                android:text="项目"
+                android:gravity="center"
                 android:textColor="@color/deep_red"
                 android:textSize="@dimen/text_14"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_new"
                 app:layout_constraintStart_toEndOf="@+id/item_article_new"
                 app:layout_constraintTop_toTopOf="@+id/item_article_new"
+                android:text="项目"
                 tools:visibility="visible" />
         </android.support.constraint.ConstraintLayout>
 
@@ -143,7 +146,7 @@
             android:id="@+id/item_article_stv"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="right|bottom"
+            android:layout_gravity="end|bottom"
             android:gravity="center"
             app:slantedBackgroundColor="@color/colorPrimary"
             app:slantedLength="25dp"
