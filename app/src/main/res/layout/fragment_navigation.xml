@@ -8,8 +8,6 @@
     <q.rorbin.verticaltablayout.VerticalTabLayout
         android:id="@+id/vtb_tab_layout"
         android:layout_width="100dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:background="#e6e6e6"
         android:layout_height="match_parent" />
 

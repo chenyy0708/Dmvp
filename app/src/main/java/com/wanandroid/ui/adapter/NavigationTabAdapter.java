@@ -34,7 +34,7 @@ public class NavigationTabAdapter extends SimpleTabAdapter {
     public ITabView.TabTitle getTitle(int position) {
         return new ITabView.TabTitle.Builder()
                 .setContent(mDatas.get(position).getName())
-                .setTextColor(Color.parseColor("#FFFFFF"), Color.parseColor("#666666"))
+                .setTextColor(Color.parseColor("#F5C50D"), Color.parseColor("#666666"))
                 .build();
     }
 }
