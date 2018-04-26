@@ -9,4 +9,5 @@
     <string name="settings">设置</string>
     <string name="about_me">关于我们</string>
     <string name="logout">退出登录</string>
+    <string name="error_please_check_network">请检查网络设置</string>
 </resources>

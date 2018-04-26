@@ -57,7 +57,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
         // 页码置为初始值 10
         page = 0;
         mRxManager.add(mModel.getHomeArticleList(page)
-                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
+                .subscribeWith(new BaseObserver<HomeArticleBean>() {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.replaceData(articleBean.getDatas());
@@ -78,7 +78,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
     @Override
     public void getBanner() {
         mRxManager.add(mModel.getHomeBanner()
-                .subscribeWith(new BaseObserver<List<BannerData>>(mContext, false) {
+                .subscribeWith(new BaseObserver<List<BannerData>>() {
                     @Override
                     protected void _onNext(List<BannerData> bannerData) {
                         mView.setBanner(bannerData);
@@ -99,7 +99,7 @@ public class ArticlePresenter extends ArticleContract.BaseArticlePresenter {
         // 加载下10页数据
         page += 1;
         mRxManager.add(mModel.getHomeArticleList(page)
-                .subscribeWith(new BaseObserver<HomeArticleBean>(mContext, false) {
+                .subscribeWith(new BaseObserver<HomeArticleBean>() {
                     @Override
                     protected void _onNext(HomeArticleBean articleBean) {
                         mAdapter.addData(articleBean.getDatas());

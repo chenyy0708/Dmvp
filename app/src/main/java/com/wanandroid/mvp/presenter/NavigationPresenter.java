@@ -31,7 +31,7 @@ public class NavigationPresenter extends NavigationContract.BaseNavigationPresen
     @Override
     public void getNavigationData() {
         mRxManager.add(mModel.getNavigationData()
-                .subscribeWith(new BaseObserver<List<NavigationBean>>(mContext, false) {
+                .subscribeWith(new BaseObserver<List<NavigationBean>>() {
                     @Override
                     protected void _onNext(List<NavigationBean> data) {
                         mView.setNavigationData(data);

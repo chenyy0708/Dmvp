@@ -1,12 +1,8 @@
 package com.chen.common.rx;
 
-import android.app.Activity;
-import android.content.Context;
-
 import com.chen.common.R;
 import com.chen.common.app.BaseApplication;
 import com.chen.common.utils.NetWorkUtils;
-import com.chen.common.widget.LoadingDialog;
 
 import io.reactivex.observers.DisposableObserver;
 
@@ -19,53 +15,19 @@ import io.reactivex.observers.DisposableObserver;
  * @author HOREN
  ********************/
 public abstract class BaseObserver<T> extends DisposableObserver<T> {
-
-    private Context mContext;
-    private String msg;
-    private boolean showDialog = true;
-
-    private BaseObserver(Context context, String msg, boolean showDialog) {
-        this.mContext = context;
-        this.msg = msg;
-        this.showDialog = showDialog;
+    protected BaseObserver() {
     }
-
-    public BaseObserver(Context context) {
-        this(context, BaseApplication.getAppContext().getString(R.string.loading), true);
-    }
-
-    protected BaseObserver(Context context, boolean showDialog) {
-        this(context, BaseApplication.getAppContext().getString(R.string.loading), showDialog);
-    }
-
-    @Override
-    public void onComplete() {
-        if (showDialog) {
-            LoadingDialog.cancelDialogForLoading();
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        if (showDialog) {
-            try {
-                LoadingDialog.showDialogForLoading((Activity) mContext, msg, true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     @Override
     public void onNext(T t) {
         _onNext(t);
     }
 
     @Override
+    public void onComplete() {
+    }
+
+    @Override
     public void onError(Throwable e) {
-        if (showDialog) {
-            LoadingDialog.cancelDialogForLoading();
-        }
         e.printStackTrace();
         //网络
         if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {

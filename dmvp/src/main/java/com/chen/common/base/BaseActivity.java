@@ -61,7 +61,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     /**
      * 设置layout前配置
      */
-    private void doBeforeSetcontentView() {
+    public void doBeforeSetcontentView() {
         // 把actvity放到application栈中管理
         AppManager.getAppManager().addActivity(this);
         // 无标题
