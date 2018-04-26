@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chen.common.base.BaseFragment;
 import com.chen.common.di.component.AppComponent;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.wanandroid.base.MBaseFragment;
 import com.wanandroid.bean.BannerData;
 import com.wanandroid.chen.R;
 import com.wanandroid.di.component.DaggerArticleComponent;
@@ -22,7 +22,6 @@ import com.wanandroid.mvp.contract.ArticleContract;
 import com.wanandroid.mvp.presenter.ArticlePresenter;
 import com.wanandroid.ui.activity.webview.CommonWebViewActivity;
 import com.wanandroid.ui.adapter.ArticleAdapter;
-import com.wanandroid.utils.SnackbarUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * @description : 首页
  */
 
-public class ArticleFragment extends BaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView, BannerData>, BGABanner.Adapter<ImageView, BannerData>,IFragment {
+public class ArticleFragment extends MBaseFragment<ArticlePresenter> implements ArticleContract.View, BGABanner.Delegate<ImageView, BannerData>, BGABanner.Adapter<ImageView, BannerData>, IFragment {
     @Inject
     ArticleAdapter mAdapter;
     @Inject
@@ -94,12 +93,6 @@ public class ArticleFragment extends BaseFragment<ArticlePresenter> implements A
                 .build()
                 .inject(this);
     }
-
-    @Override
-    public void showErrorTip(String msg) {
-        SnackbarUtils.showSnackMessage(_mActivity, msg);
-    }
-
 
     @Override
     public Activity getVActivity() {

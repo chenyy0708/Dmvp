@@ -92,5 +92,9 @@ dependencies {
     implementation 'com.google.android:flexbox:0.3.2'
     // Button
     implementation 'com.github.lygttpod:SuperTextView:2.1.6'
+    // Lottie动画
+    implementation ('com.airbnb.android:lottie:2.5.4') {
+        exclude group: "com.android.support"
+    }
     testCompile 'junit:junit:4.12'
 }

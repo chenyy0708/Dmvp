@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_base_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar" />
+
+    <com.wanandroid.widget.LoadingLayout
+        android:id="@+id/loading_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:isFirstVisible="true">
+
+        <FrameLayout
+            android:id="@+id/fl_base_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.wanandroid.widget.LoadingLayout>
+</LinearLayout>
