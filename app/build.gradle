@@ -90,5 +90,7 @@ dependencies {
     implementation 'q.rorbin:VerticalTabLayout:1.2.5'
     // Google标签控件
     implementation 'com.google.android:flexbox:0.3.2'
+    // Button
+    implementation 'com.github.lygttpod:SuperTextView:2.1.6'
     testCompile 'junit:junit:4.12'
 }

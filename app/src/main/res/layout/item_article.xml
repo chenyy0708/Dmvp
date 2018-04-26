@@ -48,18 +48,24 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView"
                 tools:text="HongYang" />
 
-            <TextView
+            <com.allen.library.SuperButton
                 android:id="@+id/item_article_project_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/shape_tag_yellow"
                 android:gravity="center"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_14"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_collect"
                 app:layout_constraintStart_toEndOf="@+id/item_article_collect"
                 app:layout_constraintTop_toTopOf="@+id/item_article_collect"
+                app:sCornersRadius="20dp"
+                app:sSizeHeight="25dp"
+                app:sSolidColor="@color/white"
+                app:sStrokeColor="@color/colorPrimary"
+                app:sStrokeWidth="@dimen/dp_1"
                 tools:text="网络编程 / 网络架构" />
 
             <TextView
@@ -109,36 +115,45 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_article_content" />
 
-            <TextView
+            <com.allen.library.SuperButton
                 android:id="@+id/item_article_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/shape_tag_green_background"
                 android:gravity="center"
+                android:text="新"
                 android:textColor="@color/light_green"
                 android:textSize="@dimen/text_14"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_author"
                 app:layout_constraintStart_toEndOf="@+id/item_article_author"
                 app:layout_constraintTop_toTopOf="@+id/item_article_author"
-                android:text="新"
+                app:sCornersRadius="20dp"
+                app:sSolidColor="@color/white"
+                app:sStrokeColor="@color/light_green"
+                app:sStrokeWidth="@dimen/dp_1"
                 tools:visibility="visible" />
 
-            <TextView
+
+            <com.allen.library.SuperButton
                 android:id="@+id/item_article_project"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/shape_tag_red_background_press"
                 android:gravity="center"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:text="项目"
                 android:textColor="@color/deep_red"
                 android:textSize="@dimen/text_14"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/item_article_new"
                 app:layout_constraintStart_toEndOf="@+id/item_article_new"
                 app:layout_constraintTop_toTopOf="@+id/item_article_new"
-                android:text="项目"
+                app:sCornersRadius="20dp"
+                app:sSolidColor="@color/white"
+                app:sStrokeColor="@color/deep_red"
+                app:sStrokeWidth="@dimen/dp_1"
                 tools:visibility="visible" />
         </android.support.constraint.ConstraintLayout>
 
