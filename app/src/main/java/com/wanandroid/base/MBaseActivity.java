@@ -148,4 +148,5 @@ public abstract class MBaseActivity<T extends BasePresenter> extends BaseActivit
     public TextView getmTitleTv() {
         return mTitleTv;
     }
+
 }

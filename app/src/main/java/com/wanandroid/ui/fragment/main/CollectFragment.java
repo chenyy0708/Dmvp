@@ -40,7 +40,8 @@ public class CollectFragment extends BaseFragment {
     @Override
     public void initData(Bundle savedInstanceState) {
         textView.setText(getArguments().getString("title"));
-        lottieAnimation.setAnimation("balloons_with_string.json");
+        lottieAnimation.setImageAssetsFolder("images/");
+        lottieAnimation.setAnimation("waveanimation.json");
         lottieAnimation.setRepeatCount(-1);
         lottieAnimation.playAnimation();
     }
