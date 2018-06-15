@@ -29,7 +29,7 @@ public class AvboboModel implements AvboboContract.Model {
 
     @Override
     public Observable<VideoListBean> getVideoList(int page, int rows) {
-        return Api.getDefult().getVideoList(page, rows)
+        return Api.getDefult().getVideoList("",page, rows)
                 .compose(RxSchedulers.<VideoListBean>io_main());
     }
 }

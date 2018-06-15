@@ -16,5 +16,5 @@ import retrofit2.http.Query;
 public interface AvboboService {
 
     @GET("/searchXiaoVideo")
-    Observable<VideoListBean> getVideoList(@Query("page") int page, @Query("limit") int limit);
+    Observable<VideoListBean> getVideoList(@Query("keyword") String keyword,@Query("page") int page, @Query("limit") int limit);
 }

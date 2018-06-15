@@ -49,4 +49,5 @@ dependencies {
     api rootProject.ext.dependencies["cardview-v7"]
 
     implementation 'com.shuyu:GSYVideoPlayer:5.0.0-beta'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 }

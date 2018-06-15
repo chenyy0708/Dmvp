@@ -3,6 +3,11 @@ package com.horen.avbobo.api;
 
 import android.util.SparseArray;
 
+import com.chen.common.app.BaseApplication;
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -44,9 +49,14 @@ public class Api {
                 return chain.proceed(build);
             }
         };
+
+
+        ClearableCookieJar cookieJar =
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApplication.getAppContext()));
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(headerInterceptor)
                 .addInterceptor(logInterceptor)
+                .cookieJar(cookieJar)
                 .build();
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").serializeNulls().create();
         retrofit = new Retrofit.Builder()
