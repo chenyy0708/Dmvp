@@ -46,27 +46,27 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation project(':dmvp')
-//    compile 'com.github.chenyy0708:DMvp:v1.0.1'
+    //    implementation project(':dmvp')
+    //    compile 'com.github.chenyy0708:DMvp:v1.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     // leakcanary
     debugImplementation rootProject.ext.dependencies["canary-debug"]
-    implementation rootProject.ext.dependencies["cardview-v7"]
+//    implementation rootProject.ext.dependencies["cardview-v7"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
-
-    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"] // 编译代码
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    // 编译代码
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+//    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+//    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
     // bottom tab
-    implementation 'me.majiajie:pager-bottom-tab-strip:2.2.5' // tab
+    implementation 'me.majiajie:pager-bottom-tab-strip:2.2.5'
+    // tab
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.7.1") {
-        exclude group: "com.android.support"
-    }
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+//    implementation('com.github.bumptech.glide:glide:4.7.1') {
+//        exclude group: "com.android.support"
+//    }
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     // 轮播图
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     // 模糊View
@@ -91,8 +91,9 @@ dependencies {
     // Button
     implementation 'com.github.lygttpod:SuperTextView:2.1.6'
     // Lottie动画
-    implementation ('com.airbnb.android:lottie:2.5.4') {
+    implementation('com.airbnb.android:lottie:2.5.4') {
         exclude group: "com.android.support"
     }
     testCompile 'junit:junit:4.12'
+    implementation project(':avbobo')
 }

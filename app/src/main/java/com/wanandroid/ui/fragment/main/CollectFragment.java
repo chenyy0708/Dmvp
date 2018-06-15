@@ -1,6 +1,7 @@
 package com.wanandroid.ui.fragment.main;
 
 import android.os.Bundle;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -23,6 +24,8 @@ public class CollectFragment extends BaseFragment {
     @BindView(R.id.lottie_animation)
     LottieAnimationView lottieAnimation;
     Unbinder unbinder;
+    @BindView(R.id.seek_bar)
+    SeekBar seekBar;
 
     public static CollectFragment newInstance(String title) {
         Bundle args = new Bundle();
@@ -41,9 +44,26 @@ public class CollectFragment extends BaseFragment {
     public void initData(Bundle savedInstanceState) {
         textView.setText(getArguments().getString("title"));
         lottieAnimation.setImageAssetsFolder("images/");
-        lottieAnimation.setAnimation("waveanimation.json");
-        lottieAnimation.setRepeatCount(-1);
+        lottieAnimation.setAnimation("data.json");
+        lottieAnimation.setRepeatCount(2);
         lottieAnimation.playAnimation();
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                lottieAnimation.setProgress(i / 100.f);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override
@@ -74,4 +94,5 @@ public class CollectFragment extends BaseFragment {
             lottieAnimation.cancelAnimation();
         }
     }
+
 }

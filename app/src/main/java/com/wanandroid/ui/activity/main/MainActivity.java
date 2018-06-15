@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.chen.common.base.BaseActivity;
 import com.chen.common.di.component.AppComponent;
 import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.horen.avbobo.ui.AvboboFragment;
 import com.jaeger.library.StatusBarUtil;
 import com.wanandroid.chen.R;
 import com.wanandroid.glide.GlideUtil;
@@ -214,7 +215,7 @@ public class MainActivity extends BaseActivity implements ISupportActivity, Navi
             mFragments[FOUR] = ArticleFragment.newInstance();
             // 侧边菜单fragment
             mFragments[FIVE] = CollectFragment.newInstance("收藏");
-            mFragments[SIX] = CollectFragment.newInstance("设置");
+            mFragments[SIX] = AvboboFragment.newInstance();
             loadMultipleRootFragment(R.id.fragment_container, FIRST, mFragments[FIRST],
                     mFragments[SECOND], mFragments[THIRD], mFragments[FOUR], mFragments[FIVE], mFragments[SIX]);
         } else {

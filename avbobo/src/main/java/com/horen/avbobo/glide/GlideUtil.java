@@ -1,9 +1,7 @@
-package com.wanandroid.glide;
+package com.horen.avbobo.glide;
 
 import android.content.Context;
 import android.widget.ImageView;
-
-import com.horen.avbobo.glide.GlideApp;
 
 /**
  * @author :ChenYangYi

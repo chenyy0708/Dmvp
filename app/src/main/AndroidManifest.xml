@@ -38,6 +38,8 @@
         </activity>
         <activity android:name="com.wanandroid.ui.activity.webview.CommonWebViewActivity"
             />
+
+        <activity android:name="com.horen.avbobo.ui.VideoActivity" />
     </application>
 
 </manifest>
